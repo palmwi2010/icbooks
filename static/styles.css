@@ -21,3 +21,13 @@ header h1 {
     color: white;
     text-transform: uppercase;
 }
+
+.board {
+    width:800px;
+    height:800px;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+}
