@@ -14,3 +14,15 @@ jobs:
         run: pip install flake8
       - name: Run flake8
         run: flake8 .
+  build:
+    needs: python-formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install flask
+        run: pip install flask
+      - name: Install pytest
+        run: pip install pytest
+      - name: Run test suite
+        run: pytest tests/*.py
