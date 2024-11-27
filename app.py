@@ -7,6 +7,7 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+
 def process_query(query):
     if query.lower() == "pi":
         return "pi is an irrational number"
@@ -14,6 +15,7 @@ def process_query(query):
         return "JRR Tolkein"
     return "UNKNOWN"
 
-@app.route("/query", methods=["GET"]) # Do we need "POST" as well?
+
+@app.route("/query", methods=["GET"])  # Do we need "POST" as well?
 def query():
     return process_query(request.args.get('q'))
