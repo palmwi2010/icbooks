@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 import json
 
+
 app = Flask(__name__)
 
 def get_book_url(book):
@@ -21,3 +22,15 @@ def index():
 @app.route("/add", methods = ["GET", "POST"])
 def add():
     return render_template("add.html")
+
+def process_query(query):
+    if query.lower() == "pi":
+        return "pi is an irrational number"
+    elif query == "Who is the author of LOTR":
+        return "JRR Tolkein"
+    return "UNKNOWN"
+
+@app.route("/query", methods=["GET"]) # Do we need "POST" as well?
+def query():
+    return process_query(request.args.get('q'))
+  
