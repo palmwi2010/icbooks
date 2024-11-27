@@ -1,20 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles.css">
-    <script src="../static/index.js" defer></script>
-    <title>Document</title>
-</head>
-<body>
-    <header>
-        <h1>Welcome to ICBooks!</h1>
-    </header>
+{% extends "template.html" %}
+
+{% block content %}
 
     <main>
         <div class="add-introduction">
-            <h2>Add a book</h2>
+            <h1>Add a book you would like to swap</h1>
             <p>Add a book that you would be open to swapping, so other users can reach out and offer a swap!</p>
             <p>Provide just your Imperial Email address and a book title, and we will fetch all details for you.</p>
         </div>
@@ -33,5 +23,4 @@
         </form>
     </main>
 
-</body>
-</html>
+{% endblock %}
