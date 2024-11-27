@@ -1,11 +1,12 @@
 import requests
 
+
 def fetch_book_details(user_input):
     # Validate input
     user_input = user_input.strip()
     if not user_input:
         return {"error": "Search term is required"}
-    
+     
     # API url
     base_url = "https://openlibrary.org/search.json"
 
