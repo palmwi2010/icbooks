@@ -9,8 +9,30 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to ICNews!</h1>
+        <h1>Welcome to ICBooks!</h1>
     </header>
+
+    <main>
+        <div class = "controls">
+                <div class = "searchbar">
+                    <input type="text" name="search" placeholder="Search for a book title" id="search">
+                <img src ="../static/assets/search.svg" class="search-icon"></button>
+                </div>
+            <form action="/add" method="get">
+                <button type="submit" class="btn">Add book</button>
+            </form>
+        </div>
+
+    <div class="library">
+        {% for bk in books %}
+            <div class="card">
+                <img src={{bk['url']}} alt="Book cover" class="card-img">
+                <p class="title">{{bk['title']}}</p>
+                <p class="author">{{bk['author']}}</p>
+            </div>
+        {% endfor %}
+    </div>
+    </main>
 
 </body>
 </html>
