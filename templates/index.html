@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles.css">
-    <script src="../static/index.js" defer></script>
-    <title>Document</title>
-</head>
-<body>
-    <header>
-        <h1>Welcome to ICBooks!</h1>
-    </header>
+{% extends "template.html" %}
 
+{% block home %}focus{% endblock %}
+
+{% block content %}
     <main>
         <div class = "controls">
                 <div class = "searchbar">
@@ -19,7 +10,7 @@
                 <img src ="../static/assets/search.svg" class="search-icon"></button>
                 </div>
             <form action="/add" method="get">
-                <button type="submit" class="btn">Add book</button>
+                <button type="submit" class="btn">Add book to swap</button>
             </form>
         </div>
 
@@ -34,5 +25,4 @@
     </div>
     </main>
 
-</body>
-</html>
+{% endblock %}

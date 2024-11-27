@@ -17,15 +17,20 @@ def get_books():
         return books
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def index():
     books = get_books()
     return render_template("index.html", books=books)
 
 
-@app.route("/add", methods=["GET", "POST"])
+@app.route("/add")
 def add():
     return render_template("add.html")
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
 
 def process_query(query):
