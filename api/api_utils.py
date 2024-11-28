@@ -6,7 +6,7 @@ def fetch_book_details(user_input):
     user_input = user_input.strip()
     if not user_input:
         return {"error": "Search term is required"}
-     
+
     # API url
     base_url = "https://openlibrary.org/search.json"
 
@@ -17,18 +17,21 @@ def fetch_book_details(user_input):
         response.raise_for_status()
     except requests.exeptions.RequestException as e:
         return {"error": f"API request failed: {e}"}
-    
+
     # Parse JSON response
     data = response.json()
 
     # Check for results
     if not data.get("docs"):
         return {"message": "No matching books found"}
-    
+
     # Extract the first result
     book = data["docs"][0]
     cover_id = book.get("cover_i", None)
-    cover_image_url = f"https://covers.openlibrary.org/b/id/{cover_id}-L.jpg" if cover_id else None
+    cover_image_url = (
+        f"https://covers.openlibrary.org/b/id/{cover_id}-L.jpg"
+        if cover_id else None
+    )
     title = book.get("title", "Unkown Title")
     authors = book.get("author_name", ["Unkown Author"])
 
