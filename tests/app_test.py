@@ -11,6 +11,7 @@ def test_pi_lower():
 def test_pi_upper():
     # Test case sensitivity
     assert process_query("PI") == "pi is an irrational number"
+    
 
 def test_knows_lotr_author():
     # Test a longer query
