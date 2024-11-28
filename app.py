@@ -15,6 +15,13 @@ def process_query(query):
         return "J.R.R. Tolkein"
     return "UNKNOWN"
 
+def get_books():
+    return
+
+
+def get_book_url():
+    return
+
 
 @app.route("/", methods=["GET"])
 def query():
