@@ -8,7 +8,7 @@
             <p>Add a book that you would be open to swapping, so other users can reach out and offer a swap!</p>
             <p>Provide just your Imperial Email address and a book title, and we will fetch all details for you.</p>
         </div>
-        <form>
+        <form action="/details" method="post">
             <div class="book-form">
                 <div class="form-item">
                     <label for="email" class="input-label">Imperial Email</label>
@@ -16,7 +16,7 @@
                 </div>
                 <div class="form-item">
                     <label for="title" class="input-label">Book title</label>
-                    <input type="email" class="input-field" name="title" placeholder="Enter book title">
+                    <input type="text" class="input-field" name="title" placeholder="Enter book title">
                 </div>
                 <button type="submit" class="btn secondary">Get info</button>
             </div>

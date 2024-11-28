@@ -9,6 +9,7 @@ def get_book_url(book):
     return r"https://covers.openlibrary.org/b/isbn/" + book['isbn'] + "-M.jpg"
 
 
+# METHOD WILL BECOME A DATABASE QUERY
 def get_books():
     with open('./static/books.json') as file:
         books = json.load(file)["books"]
@@ -17,15 +18,34 @@ def get_books():
         return books
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
-    books = get_books()
+    if request.method == "POST":
+        # QUERY API AGAIN and STORE in database
+        pass
+    books = get_books()  # WILL REPLACE WITH QUERYING DATABASE
     return render_template("index.html", books=books)
 
 
 @app.route("/add")
 def add():
     return render_template("add.html")
+
+
+@app.route("/details", methods=["GET", "POST"])
+def details():
+    if request.method == "POST":
+        title = request.form.get("title")
+        email = request.form.get("email")
+        # CALL API TO GET result dict
+        return_route = "/add"
+    else:
+        title = request.args.get("title")
+        email = request.args.get("email")
+        # QUERY DATABASE TO GET DATA
+        return_route = "/"
+    return render_template("details.html", title=title, email=email,
+                           return_route=return_route)
 
 
 @app.route("/about")
