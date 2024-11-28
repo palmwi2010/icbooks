@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template
 import json
 
+from api.api_utils import fetch_book_details
+
 
 # from api.api_utils import fetch_book_details
 
@@ -8,15 +10,15 @@ app = Flask(__name__)
 
 
 def get_book_url(book):
-    return r"https://covers.openlibrary.org/b/isbn/" + book['isbn'] + "-M.jpg"
+    return r"https://covers.openlibrary.org/b/isbn/" + book["isbn"] + "-M.jpg"
 
 
 # METHOD WILL BECOME A DATABASE QUERY
 def get_books():
-    with open('./static/books.json') as file:
+    with open("./static/books.json") as file:
         books = json.load(file)["books"]
         for bk in books:
-            bk['url'] = get_book_url(bk)
+            bk["url"] = get_book_url(bk)
         return books
 
 
@@ -39,15 +41,27 @@ def details():
     if request.method == "POST":
         title = request.form.get("title")
         email = request.form.get("email")
-        # CALL API TO GET result dict
+
+        # call api
+        result = fetch_book_details(title)
+
+        # set return route for cancel
         return_route = "/add"
-    else:
-        title = request.args.get("title")
-        email = request.args.get("email")
-        # QUERY DATABASE TO GET DATA
-        return_route = "/"
-    return render_template("details.html", title=title, email=email,
-                           return_route=return_route)
+
+        return render_template(
+            "details.html", result=result, email=email,
+            return_route=return_route
+        )
+    title = request.args.get("title")
+    email = request.args.get("email")
+
+    result = {"title": title, "author": "unknown", "img_src": "#"}
+
+    return_route = "/"
+
+    return render_template(
+        "details.html", result=result, email=email, return_route=return_route
+    )
 
 
 @app.route("/about")
@@ -65,4 +79,4 @@ def process_query(query):
 
 @app.route("/query", methods=["GET"])  # Do we need "POST" as well?
 def query():
-    return process_query(request.args.get('q'))
+    return process_query(request.args.get("q"))

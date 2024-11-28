@@ -14,18 +14,18 @@
                 </div>
                 <div class="form-item">
                     <p class="input-label">Title</label>
-                    <p class="value-field">{{title}}</p>
+                    <p class="value-field">{{result['title']}}</p>
                 </div>
                 <div class="form-item">
                     <p class="input-label">Author</label>
-                    <p class="value-field">placeholder</p>
+                    <p class="value-field">{{result['authors']}}</p>
                 </div>
 
                 <div class="bottom-buttons">
                     <a href={{return_route}} class="btn secondary gray">Back</a>
                     <button type="submit" class="btn secondary">Confirm</button>
                 </div>
-
+                <img src={{result['cover_image_url']}}>
             </div>
         </form>
     </main>
