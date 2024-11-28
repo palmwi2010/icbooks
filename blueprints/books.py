@@ -21,8 +21,11 @@ def all():
     if request.method == "POST":
         database.session.add(
             Book(
+                # this is where data is extracted from submitted form HTTP POST request
                 title=request.form["book_title"],
                 author=request.form["book_author"],
+                email_user=request.form["email_user"],
+                book_cover =request.form["book_cover"],
             )
         )
         database.session.commit()
