@@ -29,7 +29,7 @@ def fetch_book_details(user_input):
     book = data["docs"][0]
     cover_id = book.get("cover_i", None)
     cover_image_url = (
-        f"https://covers.openlibrary.org/b/id/{cover_id}-L.jpg" 
+        f"https://covers.openlibrary.org/b/id/{cover_id}-L.jpg"
         if cover_id else None
     )
     title = book.get("title", "Unkown Title")
