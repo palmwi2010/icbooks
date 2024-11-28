@@ -32,7 +32,6 @@ def add():
 def about():
     return render_template("about.html")
 
-
 def process_query(query):
     if query.lower() == "pi":
         return "pi is an irrational number"
