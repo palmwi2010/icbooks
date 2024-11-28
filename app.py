@@ -53,17 +53,12 @@ def about():
     return render_template("about.html")
 
 
-
 def process_query(query):
     if query.lower() == "pi":
         return "pi is an irrational number"
     elif query == "Who is the author of LOTR":
         return "J.R.R. Tolkein"
     return "UNKNOWN"
-
-
-def get_book_url():
-    return
 
 
 @app.route("/query", methods=["GET"])  # Do we need "POST" as well?
