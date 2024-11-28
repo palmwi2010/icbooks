@@ -1,0 +1,33 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+    <main>
+        <div class="add-introduction">
+            <h1>Details for {{title}}</h1>
+        </div>
+        <form action="/", method="post">
+            <div class="book-form">
+                <div class="form-item">
+                    <p class="input-label">Owner</label>
+                    <p class="value-field">{{email}}</p>
+                </div>
+                <div class="form-item">
+                    <p class="input-label">Title</label>
+                    <p class="value-field">{{title}}</p>
+                </div>
+                <div class="form-item">
+                    <p class="input-label">Author</label>
+                    <p class="value-field">placeholder</p>
+                </div>
+
+                <div class="bottom-buttons">
+                    <a href={{return_route}} class="btn secondary gray">Back</a>
+                    <button type="submit" class="btn secondary">Confirm</button>
+                </div>
+
+            </div>
+        </form>
+    </main>
+
+{% endblock %}
