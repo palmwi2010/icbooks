@@ -8,7 +8,8 @@
       "rating": 4.8,
       "image_url": "https://images-na.ssl-images-amazon.com/images/I/81OthjkJBuL.jpg",
       "description": "A gripping, heart-wrenching, and wholly remarkable tale of coming-of-age in a South poisoned by virulent prejudice, To Kill a Mockingbird is the story of a young girl named Scout Finch and her father, lawyer Atticus Finch, who defends a black man unjustly accused of a crime.",
-      "isbn": "9780061120084"
+      "isbn": "9780061120084",
+      "owner": "wp624@ic.ac.uk"
     },
     {
       "title": "1984",
@@ -18,7 +19,8 @@
       "rating": 4.7,
       "image_url": "https://images-na.ssl-images-amazon.com/images/I/71kxa1-0mfL.jpg",
       "description": "A dystopian novel set in a totalitarian society ruled by Big Brother, 1984 explores the consequences of surveillance, censorship, and the loss of personal freedoms. It follows Winston Smith, who rebels against the Party but is ultimately crushed by the oppressive regime.",
-      "isbn": "9780451524935"
+      "isbn": "9780451524935",
+      "owner": "wp624@ic.ac.uk"
     },
     {
       "title": "The Catcher in the Rye",
@@ -28,7 +30,8 @@
       "rating": 4.2,
       "image_url": "https://images-na.ssl-images-amazon.com/images/I/81O2wHjSHLL.jpg",
       "description": "A young man named Holden Caulfield narrates his troubled journey through adolescence as he grapples with depression, alienation, and his fears of growing up. The novel captures the struggles of youth and the challenge of finding one’s place in the world.",
-      "isbn": "9780316769488"
+      "isbn": "9780316769488",
+      "owner": "wp624@ic.ac.uk"
     },
     {
       "title": "Pride and Prejudice",
@@ -38,7 +41,8 @@
       "rating": 4.6,
       "image_url": "https://images-na.ssl-images-amazon.com/images/I/91VV-YwJr9L.jpg",
       "description": "Set in the early 19th century, this beloved novel centers on the romantic tension between Elizabeth Bennet and the proud Mr. Darcy, exploring themes of marriage, morality, and the class system. Austen’s sharp wit and social commentary have made it a timeless classic.",
-      "isbn": "9781503290563"
+      "isbn": "9781503290563",
+      "owner": "wp624@ic.ac.uk"
     },
     {
       "title": "The Great Gatsby",
@@ -48,7 +52,8 @@
       "rating": 4.5,
       "image_url": "https://images-na.ssl-images-amazon.com/images/I/71V4JcXFeOL.jpg",
       "description": "Set in the Roaring Twenties, The Great Gatsby follows Jay Gatsby’s obsessive pursuit of Daisy Buchanan and explores the theme of the American Dream. It’s a tragic tale of love, wealth, and loss, highlighting the emptiness of materialism.",
-      "isbn": "9780743273565"
+      "isbn": "9780743273565",
+      "owner": "wp624@ic.ac.uk"
     },
     {
       "title": "Moby-Dick",
@@ -58,7 +63,8 @@
       "rating": 4.1,
       "image_url": "https://images-na.ssl-images-amazon.com/images/I/71dIxtgSo-L.jpg",
       "description": "This epic tale follows Captain Ahab's obsessive quest to hunt down the white whale Moby Dick, which symbolizes nature's power and the limits of human ambition. Moby-Dick is a deeply philosophical work, reflecting on fate, vengeance, and humanity.",
-      "isbn": "9788483087565"
+      "isbn": "9788483087565",
+      "owner": "wp624@ic.ac.uk"
     },
     {
       "title": "The Hobbit",
@@ -68,7 +74,8 @@
       "rating": 4.8,
       "image_url": "https://images-na.ssl-images-amazon.com/images/I/91b8uQ7tXgL.jpg",
       "description": "Bilbo Baggins, a hobbit, embarks on an unexpected journey with a group of dwarves to reclaim their homeland from a fearsome dragon. This timeless tale of adventure and bravery introduces readers to Tolkien’s richly imagined world of Middle-earth.",
-      "isbn": "9780345339683"
+      "isbn": "9780345339683",
+      "owner": "wp624@ic.ac.uk"
     },
     {
       "title": "The Book Thief",
@@ -78,7 +85,8 @@
       "rating": 4.7,
       "image_url": "https://images-na.ssl-images-amazon.com/images/I/91qBto8cQKL.jpg",
       "description": "Set during World War II, The Book Thief follows Liesel Meminger, a young girl living in Nazi Germany. Narrated by Death, the novel explores the power of books, the horrors of war, and the courage of the human spirit.",
-      "isbn": "9780375842207"
+      "isbn": "9780375842207",
+      "owner": "wp624@ic.ac.uk"
     },
     {
       "title": "Brave New World",
@@ -88,7 +96,8 @@
       "rating": 4.3,
       "image_url": "https://images-na.ssl-images-amazon.com/images/I/71yOow9iTgL.jpg",
       "description": "Brave New World presents a vision of a dystopian future where human beings are mass-produced, conditioned for societal roles, and kept placid through artificial happiness. It’s a chilling exploration of the dangers of totalitarianism and the dehumanization caused by technological advancement.",
-      "isbn": "9780060850524"
+      "isbn": "9780060850524",
+      "owner": "wp624@ic.ac.uk"
     },
     {
       "title": "The Hunger Games",
@@ -98,7 +107,8 @@
       "rating": 4.5,
       "image_url": "https://images-na.ssl-images-amazon.com/images/I/81l1bX2PvzL.jpg",
       "description": "In a post-apocalyptic world, Katniss Everdeen volunteers to take her sister’s place in a deadly televised competition where children fight to the death. The Hunger Games is a fast-paced, thought-provoking commentary on society, survival, and sacrifice.",
-      "isbn": "9780439023528"
+      "isbn": "9780439023528",
+      "owner": "wp624@ic.ac.uk"
     }
   ]
 }

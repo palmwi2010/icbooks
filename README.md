@@ -33,6 +33,10 @@ flask run --debug
 ```
 pre-commit install
 ```
+To check if the current directory will pass pre commit checks, run:
+```
+pre-commit run --all-files
+```
 
 #### When pushing to remote, set an upstream branch like the below
 ```

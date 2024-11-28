@@ -16,11 +16,11 @@
 
     <div class="library">
         {% for bk in books %}
-            <div class="card">
+            <a class="card" href="/details?title={{bk['title']}}&email={{bk['owner']}}">
                 <img src={{bk['url']}} alt="Book cover" class="card-img">
                 <p class="title">{{bk['title']}}</p>
                 <p class="author">{{bk['author']}}</p>
-            </div>
+            </a>
         {% endfor %}
     </div>
     </main>
