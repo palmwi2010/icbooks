@@ -34,10 +34,18 @@ def fetch_book_details(user_input):
     )
     title = book.get("title", "Unkown Title")
     authors = book.get("author_name", ["Unkown Author"])
+    isbn = book.get("isbn", "ISBN Not Found")
+    publish_date = book.get("publish_date", "Publish Date Not Found")
+    first_sentence = book.get("first_sentence", "Uknown First Sentence")
+    subject = book.get("subject", "Unkown Subject")
 
     # Return book details
     return {
         "cover_image_url": cover_image_url,
         "authors": authors,
-        "title": title
+        "title": title,
+        "isbn": isbn,
+        "publish_date": publish_date,
+        "first_sentence": first_sentence,
+        "subject": subject
     }
