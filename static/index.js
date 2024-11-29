@@ -1,9 +1,12 @@
 // add listener to input field
 const $input = document.querySelector("#search");
-$input.addEventListener("input", e => {
-    const search_term = e.target.value;
-    applyFilter(search_term);
-})
+
+if ($input) {
+    $input.addEventListener("input", e => {
+        const search_term = e.target.value;
+        applyFilter(search_term);
+    })
+}
 
 const applyFilter = (search_term) => {
     const $cards = document.querySelectorAll(".card");
@@ -23,3 +26,14 @@ const applyFilter = (search_term) => {
     })
 }
 
+const $copyIcon = document.querySelector("#copyButton");
+
+if ($copyIcon) {
+    $copyIcon.addEventListener('click', () => handleCopyClick());
+}
+
+const handleCopyClick = () => {
+    const $email = document.querySelector("#copyEmail");
+    const emailAddress = $email.innerText;
+    navigator.clipboard.writeText(emailAddress);
+}
