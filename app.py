@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, session
 import json
 
 from api.api_utils import fetch_book_details
@@ -7,6 +7,7 @@ from api.api_utils import fetch_book_details
 # from api.api_utils import fetch_book_details
 
 app = Flask(__name__)
+app.secret_key = 'abc'
 
 
 def get_book_url(book):
@@ -16,18 +17,30 @@ def get_book_url(book):
 # METHOD WILL BECOME A DATABASE QUERY
 def get_books():
     with open("./static/books.json") as file:
-        books = json.load(file)["books"]
+        books = json.load(file)
         for bk in books:
-            bk["url"] = get_book_url(bk)
+            bk["cover_image_url"] = get_book_url(bk)
         return books
+
+
+def get_book_from_isbn(books, isbn):
+    for bk in books:
+        if bk['isbn'] == isbn:
+            return bk
+
+
+# make books a global variable
+books = get_books()
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    # books = get_books()  # REFRESH - WILL REPLACE WITH QUERYING DATABASE
     if request.method == "POST":
-        # QUERY API AGAIN and STORE in database
-        pass
-    books = get_books()  # WILL REPLACE WITH QUERYING DATABASE
+        book_data = session.pop('book_data', None)
+        book_data['email'] = request.form.get('email', None)
+        books.append(book_data)
+        # STORE in database
     return render_template("index.html", books=books)
 
 
@@ -40,28 +53,20 @@ def add():
 def details():
     if request.method == "POST":
         title = request.form.get("title")
-        email = request.form.get("email")
 
         # call api
-        result = fetch_book_details(title)
+        book_data = fetch_book_details(title)
+        session['book_data'] = book_data
 
         # set return route for cancel
         return_route = "/add"
+    else:
+        isbn = request.args.get("isbn")
+        book_data = get_book_from_isbn(books, isbn)
+        return_route = "/"
 
-        return render_template(
-            "details.html", result=result, email=email,
-            return_route=return_route
-        )
-    title = request.args.get("title")
-    email = request.args.get("email")
-
-    result = {"title": title, "author": "unknown", "img_src": "#"}
-
-    return_route = "/"
-
-    return render_template(
-        "details.html", result=result, email=email, return_route=return_route
-    )
+    return render_template("details.html", result=book_data,
+                           return_route=return_route)
 
 
 @app.route("/about")
