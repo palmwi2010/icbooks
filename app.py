@@ -82,6 +82,6 @@ def process_query(query):
     return "UNKNOWN"
 
 
-@app.route("/query", methods=["GET"])  # Do we need "POST" as well?
+@app.route("/query", methods=["GET"])
 def query():
     return process_query(request.args.get("q"))
