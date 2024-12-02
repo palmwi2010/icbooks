@@ -18,6 +18,10 @@ source venv/bin/activate
 ```
 pip install -r requirements.txt
 ```
+#### Configure path to use imports
+```
+export PYTHONPATH=$(pwd)
+```
 
 #### Create a branch
 ```

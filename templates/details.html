@@ -3,31 +3,55 @@
 {% block content %}
 
     <main>
-        <div class="add-introduction">
-            <h1>Details for {{title}}</h1>
-        </div>
-        <form action="/", method="post">
-            <div class="book-form">
-                <div class="form-item">
-                    <p class="input-label">Owner</label>
-                    <p class="value-field">{{email}}</p>
-                </div>
-                <div class="form-item">
-                    <p class="input-label">Title</label>
-                    <p class="value-field">{{title}}</p>
-                </div>
-                <div class="form-item">
-                    <p class="input-label">Author</label>
-                    <p class="value-field">placeholder</p>
-                </div>
+        <div class="details-container">
+            
+            <div class="details-lhs">
+                <form action="/", method="post">
 
-                <div class="bottom-buttons">
-                    <a href={{return_route}} class="btn secondary gray">Back</a>
-                    <button type="submit" class="btn secondary">Confirm</button>
-                </div>
+                    <div class="details-introduction">
+                        <h1 class="book-title">{{result['title']}}</h1>
+                        <h2 class="author-subtitle">{{result['authors']}}</h2>
+                    </div>
 
+                    <div class="main-details">
+                        <p class = "quote">{{result['first_sentence']}}</p>
+
+                        <ul class="genre">
+                            <li>Fiction</li>
+                            <li>Fantasy</li>
+                            <li>Adventure</li>
+                        </ul>
+                        
+                        <p><strong>Published:</strong> {{result['publish_date']}}</p>
+                        <p><strong>ISBN:</strong> {{result['isbn']}}</p>
+                        
+                        
+                        <div class="form-item">
+                            {% if return_route != "/" %}
+                            <p class="email-instruction">To list for swapping, enter your Email and press confirm!</p>
+                            <input type="email" class="input-field" name="email" placeholder="Enter Imperial Email">
+                            {% else %}
+                            <p class="email-instruction">Reach out to the user below to request a swap!</p>
+                            <div class="contact-link">
+                                <p id="copyEmail">{{result['email']}}</p>
+                                <span class="copy-icon" id="copyButton" title="Copy to clipboard">&#x1F4CB;</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="bottom-buttons">
+                        <a href={{return_route}} class="btn secondary gray">Back</a>
+                        {% if return_route != "/" %}
+                        <button type="submit" class="btn secondary">Confirm</button>
+                        {% endif %}
+                    </div>
+
+                </form>
             </div>
-        </form>
+            <img src={{result['cover_image_url']}} alt="Book cover" class="book-side-img">
+        </div>
     </main>
 
 {% endblock %}
+

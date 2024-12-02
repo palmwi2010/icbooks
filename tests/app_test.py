@@ -30,8 +30,8 @@ def test_homepage_loads_correctly():
 # API tests:
 def test_get_books_with_mock_file():
     # Mock the content of the JSON file
-    mock_json_data = '''{"books": [{"title": "Book Title",
-    "isbn": "123456789", "authors": "Anonymous"}]}'''
+    mock_json_data = """{"books": [{"title": "Book Title",
+    "isbn": "123456789", "authors": "Anonymous"}]}"""
 
     # Temporarily replace the open() function with a mock version using patch
     with patch("builtins.open", mock_open(read_data=mock_json_data)):
