@@ -70,5 +70,5 @@ def fetch_book_details(user_input):
         "isbn": isbn,
         "publish_date": publish_date,
         "first_sentence": first_sentence,
-        "matching_genre": matching_genre,
+        "matching_genre": ', '.join(matching_genre),
     }

@@ -24,25 +24,25 @@ def populate():
         Book(
             isbn="9780552773898",
             email="william.palmer24@imperial.ac.uk",
-            cover_image_url="https://m.media-amazon.com/images/I/"
-            "71H2SJik5AL._SY342_.jpg",
+            cover_image_url=(
+                "https://covers.openlibrary.org/b/isbn/9780552773898-M.jpg"
+            ),
             title="The Book Thief",
             authors="Markus Zusak",
             publish_date="2020",
-            first_sentence="It was a cold, quiet evening when the book"
-            "first arrived.",
+            first_sentence="It was a cold, quiet evening when the book",
             subject="Fiction, Fantasy, Adventure",
         ),
         Book(
-            isbn="0446310786",  # 0 missing before 44
+            isbn="9780061120084",
             email="alfonso.gambino24@imperial.ac.uk",
-            cover_image_url="https://m.media-amazon.com/images/I/71FxgtFKcQL"
-            "._SY342_.jpg",
+            cover_image_url=(
+                "https://covers.openlibrary.org/b/isbn/9780061120084-M.jpg",
+            ),
             title="To Kill a Mockingbird",
             authors="Harper Lee",
             publish_date="1960",
-            first_sentence="The sun was setting over the quiet town, casting"
-            "long shadows on the dusty streets.",
+            first_sentence="First sentence.",
             subject="Fiction, Fantasy, Adventure",
         ),
     ]
