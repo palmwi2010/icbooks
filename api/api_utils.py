@@ -12,14 +12,25 @@ def fetch_book_details(user_input):
 
     # List of all possible book genres (you can expand this list)
     predefined_genres = [
-        "Fiction", "Fantasy", "Science Fiction", "Romance",
-        "Thriller", "Mystery", "Horror", "Biography",
-        "History", "Self-Help", "Poetry", "Drama"
+        "Fiction",
+        "Fantasy",
+        "Science Fiction",
+        "Romance",
+        "Thriller",
+        "Mystery",
+        "Horror",
+        "Biography",
+        "History",
+        "Self-Help",
+        "Poetry",
+        "Drama",
     ]
 
     # Make the API request
     try:
-        response = requests.get(base_url, params={"q": user_input})
+        response = requests.get(
+            base_url, params={"q": user_input, "sorts": "new"}
+            )
         # Raises an error if the API is not responding
         response.raise_for_status()
     except requests.exeptions.RequestException as e:
@@ -36,13 +47,13 @@ def fetch_book_details(user_input):
     book = data["docs"][0]
     cover_id = book.get("cover_i", None)
     cover_image_url = (
-        f"https://covers.openlibrary.org/b/id/{cover_id}-L.jpg"
+        f"https://covers.openlibrary.org/b/id/{cover_id}-M.jpg"
         if cover_id else None
     )
     title = book.get("title", "Unkown Title")
     authors = ", ".join(book.get("author_name", "Unkown Author"))
     isbn = book.get("isbn", "ISBN Not Found")[0]
-    publish_date = book.get("publish_date", "Publish Date Not Found")[-1]
+    publish_date = book.get("publish_date", "Publish Date Not Found")[0]
     first_sentence = book.get("first_sentence", "Uknown First Sentence")[0]
     subject = book.get("subject", [])
 
@@ -57,5 +68,5 @@ def fetch_book_details(user_input):
         "isbn": isbn,
         "publish_date": publish_date,
         "first_sentence": first_sentence,
-        "matching_genre": matching_genre
+        "matching_genre": matching_genre,
     }
