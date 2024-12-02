@@ -16,7 +16,7 @@ def fetch_book_details(user_input):
         "Thriller", "Mystery", "Horror", "Biography",
         "History", "Self-Help", "Poetry", "Drama"
     ]
-    
+
     # Make the API request
     try:
         response = requests.get(base_url, params={"q": user_input})
@@ -47,7 +47,7 @@ def fetch_book_details(user_input):
     subject = book.get("subject", [])
 
     # Find matching generes
-    matching_genres = [genre for genre in subject if genre in predefined_genres]
+    matching_genre = [genre for genre in subject if genre in predefined_genres]
 
     # Return book details
     return {
@@ -57,5 +57,5 @@ def fetch_book_details(user_input):
         "isbn": isbn,
         "publish_date": publish_date,
         "first_sentence": first_sentence,
-        "matching_genres": matching_genres
+        "matching_genre": matching_genre
     }
