@@ -10,6 +10,13 @@ def fetch_book_details(user_input):
     # API url
     base_url = "https://openlibrary.org/search.json"
 
+    # List of all possible book genres (you can expand this list)
+    predefined_genres = [
+        "Fiction", "Fantasy", "Science Fiction", "Romance",
+        "Thriller", "Mystery", "Horror", "Biography",
+        "History", "Self-Help", "Poetry", "Drama"
+    ]
+
     # Make the API request
     try:
         response = requests.get(base_url, params={"q": user_input})
@@ -37,7 +44,10 @@ def fetch_book_details(user_input):
     isbn = book.get("isbn", "ISBN Not Found")[0]
     publish_date = book.get("publish_date", "Publish Date Not Found")[-1]
     first_sentence = book.get("first_sentence", "Uknown First Sentence")[0]
-    subject = book.get("subject", "Unkown Subject")[0]
+    subject = book.get("subject", [])
+
+    # Find matching generes
+    matching_genre = [genre for genre in subject if genre in predefined_genres]
 
     # Return book details
     return {
@@ -47,5 +57,5 @@ def fetch_book_details(user_input):
         "isbn": isbn,
         "publish_date": publish_date,
         "first_sentence": first_sentence,
-        "subject": subject,
+        "matching_genre": matching_genre
     }
