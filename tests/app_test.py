@@ -1,7 +1,7 @@
 from app import app, process_query, get_books, get_book_url
-from unittest.mock import mock_open, patch
+from unittest.mock import mock_open, patch, MagicMock
 import json
-
+from models.book import Book
 
 def test_pi_lower():
     # Test "pi" query
@@ -30,8 +30,10 @@ def test_homepage_loads_correctly():
 # API tests:
 def test_get_books_with_mock_json_file():
     # Mock the content of the JSON file
-    mock_json_data = """{"books": [{"title": "Book Title",
-    "isbn": "123456789", "authors": "Anonymous"}]}"""
+    mock_json_data = """{
+    "books": [
+        {"title": "Book Title", "isbn": "123456789", "authors": "Anonymous"}
+    ]}"""
 
     # Temporarily replace the open() function with a mock version using patch
     with patch("builtins.open", mock_open(read_data=mock_json_data)):
@@ -136,3 +138,49 @@ def test_books_have_correct_urls():
         "https://covers.openlibrary.org/b/isbn/" + books[-1]["isbn"] + "-M.jpg"
     )
     assert books[-1]["url"] == expected_url_last
+
+# Database tests
+from models.book import Book
+from unittest.mock import MagicMock
+
+def test_add_book():
+    mock_database_session = MagicMock()
+    book_data = {
+        "isbn": "9876543210",
+        "book-title": "Test Book",
+        "author-subtitle": "Test Author",
+        "email": "test@gmail.com",
+        "published_date": "1st January 2000",
+    }
+
+    # Simulate form submission to add book
+    with patch("database.database.session", mock_database_session):
+        from blueprints.books import all as add_book
+        with app.test_client() as client:
+            response = client.post(
+                "/books/addbook",
+                data=book_data
+            )
+
+        # Check that database session's `add` method was called
+        mock_database_session.add.assert_called_once()
+        book = mock_database_session.add.call_args[0][0]
+        assert isinstance(book, Book)
+        assert book.isbn == book_data["isbn"]
+        assert book.title == book_data["book-title"]
+
+def test_get_books_from_database():
+    # Mock database query
+    mock_books = [
+        Book(isbn="123", title="Test Book 1", authors="Author 1"),
+        Book(isbn="456", title="Test Book 2", authors="Author 2"),
+    ]
+    with patch("database.database.session.execute") as mock_execute:
+        mock_execute.return_value.all.return_value = mock_books
+
+        from blueprints.books import all as get_books
+        with app.test_client() as client:
+            response = client.get("/books/addbook")
+
+        # Assert books are fetched correctly
+        assert len(response.context["result"]) == len(mock_books)

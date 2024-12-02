@@ -41,11 +41,22 @@ def get_book_url(book):
 
 # METHOD WILL BECOME A DATABASE QUERY
 def get_books():
-    with open("./static/books.json") as file:
-        books = json.load(file)
-        for bk in books:
+    # Open the file and parse the JSON data
+    try:
+        with open("./static/books.json") as file:
+            books = json.load(file) # JSON data -> dictionary 
+    except FileNotFoundError:
+        raise FileNotFoundError("The file 'static/books.json' was not found.")
+    except json.JSONDecodeError:
+        raise ValueError("The file contains invalid JSON.")
+
+    for bk in books:
+        if isinstance(bk, dict) and "isbn" in bk:
             bk["cover_image_url"] = get_book_url(bk)
-        return books
+        else:
+            raise ValueError(f"Invalid book entry: {bk}")
+
+    return books
 
 
 def get_book_from_isbn(books, isbn):
