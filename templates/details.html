@@ -6,7 +6,7 @@
         <div class="details-container">
             
             <div class="details-lhs">
-                <form action="/", method="post">
+                <form action="/add", method="post">
 
                     <div class="details-introduction">
                         <h1 class="book-title">{{result['title']}}</h1>
@@ -19,7 +19,7 @@
                         {% endif %}
 
                         <ul class="genre">
-                            {% for genre in result['matching_genre'] %}
+                            {% for genre in result['matching_genre'].split(', ') %}
                             <li>{{genre}}</li>
                             {% endfor %}
                         </ul>
@@ -45,6 +45,13 @@
                     <div class="bottom-buttons">
                         <a href={{return_route}} class="btn secondary gray">Back</a>
                         {% if return_route != "/" %}
+                        <input type="text" hidden value="{{result['title']}}" name="title">
+                        <input type="text" hidden value="{{result['authors']}}" name="authors">
+                        <input type="text" hidden value="{{result['subject']}}" name="subject">
+                        <input type="text" hidden value="{{result['first_sentence']}}" name="first_sentence">
+                        <input type="text" hidden value="{{result['cover_image_url']}}" name="cover_image_url">
+                        <input type="text" hidden value="{{result['publish_date']}}" name="publish_date">
+                        <input type="text" hidden value="{{result['isbn']}}" name="isbn">
                         <button type="submit" class="btn secondary">Confirm</button>
                         {% endif %}
                     </div>
