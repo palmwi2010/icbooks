@@ -19,7 +19,7 @@
                         {% endif %}
 
                         <ul class="genre">
-                            {% for genre in result['matching_genre'].split(', ') %}
+                            {% for genre in result['subject'].split(', ') %}
                             <li>{{genre}}</li>
                             {% endfor %}
                         </ul>
