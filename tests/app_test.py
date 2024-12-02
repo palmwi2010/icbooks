@@ -45,6 +45,7 @@ def test_get_books_with_mock_json_file():
     assert books[0]["author"] == "Anonymous"
     assert books[0]["url"] == url
 
+
 def test_fetch_book_details_success():
     # Mock successful API response
     mock_response = {
@@ -66,15 +67,17 @@ def test_fetch_book_details_success():
         mock_get.return_value.json.return_value = mock_response
 
         from api.api_utils import fetch_book_details
+
         book_details = fetch_book_details("Test Book")
 
-        assert book_details["cover_i"] == "14625765" # int -> str
+        assert book_details["cover_i"] == "14625765"  # int -> str
         assert book_details["title"] == "The Lord of the Rings"
-        assert book_details["authors"] == "J.R.R Tolkein, No Other" # join
+        assert book_details["authors"] == "J.R.R Tolkein, No Other"  # join
         assert book_details["isbn"] == "9781611748864"
         assert book_details["cover_image_url"] == (
             "https://covers.openlibrary.org/b/id/14625765-M.jpg"
         )
+
 
 def test_fetch_book_details_no_results():
     # Mock API response with no results
@@ -85,6 +88,7 @@ def test_fetch_book_details_no_results():
         mock_get.return_value.json.return_value = mock_response
 
         from api.api_utils import fetch_book_details
+
         book_details = fetch_book_details("siahdlidnflbdnb")
 
         assert "message" in book_details
