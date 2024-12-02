@@ -21,21 +21,25 @@ from models.book import Book
 books = Blueprint("books", __name__, url_prefix="/books")
 
 
-@books.route("/", methods=["GET", "POST"])
+@books.route("/addbook", methods=["GET", "POST"])
 def all():
     if request.method == "POST":
+        print("Adding book")
+        print(request.form["isbn"])
         database.session.add(
             Book(
                 # this is where data is extracted
                 # from submitted form HTTP POST request
-                title=request.form["book_title"],
-                author=request.form["book_author"],
-                email_user=request.form["email_user"],
-                book_cover=request.form["book_cover"],
+                isbn=request.form["isbn"],
+                title=request.form["book-title"],
+                authors=request.form["author-subtitle"],
+                email=request.form["email"],
+                publish_date=request.form["published_date"]
+                # book_cover=request.form["book_cover"],
             )
         )
         database.session.commit()
 
     # Retrieve books from the database
-    all_books = database.session.execute(select(Book)).scalars()
-    return render_template("books.html", books=all_books)
+    all_books = database.session.execute(select(Book)).all()
+    return render_template("details.html", result=all_books[-1])

@@ -25,7 +25,7 @@ def populate():
             isbn="9780552773898",
             email="william.palmer24@imperial.ac.uk",
             cover_image_url=(
-                "https://covers.openlibrary.org/b/id/9780552773898-M.jpg"
+                "https://covers.openlibrary.org/b/isbn/9780552773898-M.jpg"
             ),
             title="The Book Thief",
             authors="Markus Zusak",

@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, session, redirect
-from flask_caching import Cache
 import json
 from database import database
 from sqlalchemy import select
@@ -11,7 +10,6 @@ from api.api_utils import fetch_book_details
 
 app = Flask(__name__)
 app.secret_key = "abc"
-cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 # connection to real database
 app.config["SQLALCHEMY_DATABASE_URI"] = (
@@ -34,13 +32,7 @@ with app.app_context():
     app.cli.add_command(populate)
 
 
-if __name__ == "__main__":
-    app.debug = True
-    app.run()
-
-
 def get_book_url(book):
-    print("https://covers.openlibrary.org/b/isbn/" + book["isbn"] + "-M.jpg")
     return r"https://covers.openlibrary.org/b/isbn/" + book["isbn"] + "-M.jpg"
 
 
