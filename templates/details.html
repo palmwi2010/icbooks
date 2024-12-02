@@ -6,7 +6,7 @@
         <div class="details-container">
             
             <div class="details-lhs">
-                <form action="/", method="post">
+                <form action="/books/addbook", method="post">
 
                     <div class="details-introduction">
                         <h1 class="book-title">{{result['title']}}</h1>
@@ -38,10 +38,15 @@
                             </div>
                             {% endif %}
                         </div>
+                        <!-- adding input -->
+                        <input type="hidden" name="isbn" value ="{{result['isbn']}}">
+                        <input type="hidden" name="book-title" value ="{{result['title']}}">
+                        <input type="hidden" name="author-subtitle" value ="{{result['authors']}}">
+                        <input type="hidden" name="published_date" value ="{{result['publish_date']}}">
                     </div>
 
                     <div class="bottom-buttons">
-                        <a href={{return_route}} class="btn secondary gray">Back</a>
+                        <!-- <a href={{return_route}} class="btn secondary gray">Back</a> -->
                         {% if return_route != "/" %}
                         <button type="submit" class="btn secondary">Confirm</button>
                         {% endif %}
