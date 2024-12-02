@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, session, redirect
+from flask_caching import Cache
 import json
 from database import database
 from sqlalchemy import select
@@ -10,6 +11,7 @@ from api.api_utils import fetch_book_details
 
 app = Flask(__name__)
 app.secret_key = "abc"
+cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 # connection to real database
 app.config["SQLALCHEMY_DATABASE_URI"] = (

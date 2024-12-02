@@ -5,7 +5,8 @@ from database import database as db
 class Book(db.Model):
 
     # __tablename__ = "books"
-    isbn = db.Column(db.String, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    isbn = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=True)
     cover_image_url = db.Column(db.String, nullable=True)
     title = db.Column(db.String, nullable=False)
