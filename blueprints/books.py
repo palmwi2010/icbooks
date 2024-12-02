@@ -7,12 +7,12 @@ from sqlalchemy import select
 # Imports the database object (an instance of SQLAlchemy),
 # which manages the connection to the database
 # and provides methods to interact with it.
-from database import database
+from ..database import database
 
 # Imports the Book model, which maps to a table in the database
 # (likely representing books).
 # Each instance of Book corresponds to a row in the database.
-from models.book import Book
+from ..models.book import Book
 
 
 # All routes in this Blueprint will have URLs prefixed with /books
