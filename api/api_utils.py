@@ -29,7 +29,9 @@ def fetch_book_details(user_input):
     # Make the API request
     try:
         response = requests.get(
-            base_url, params={"q": user_input, "lang": "eng"}
+            base_url, params={"q": user_input,
+                              "language": "eng",
+                              "limit": 1}
             )
         # Raises an error if the API is not responding
         response.raise_for_status()
@@ -53,7 +55,7 @@ def fetch_book_details(user_input):
     title = book.get("title", "Unkown Title")
     authors = ", ".join(book.get("author_name", "Unkown Author"))
     isbn = book.get("isbn", "ISBN Not Found")[0]
-    publish_date = book.get("publish_date", "Publish Date Not Found")[0]
+    publish_date = book.get("first_publish_year", "Publish Date Not Found")
     first_sentence = book.get("first_sentence", "Uknown First Sentence")[0]
     subject = book.get("subject", [])
 
