@@ -1,0 +1,28 @@
+.
+├── app.py
+├── blueprints
+│   ├── books.py
+│   └── __init__.py
+├── database
+│   └── __init__.py
+├── deploy.sh
+├── __init__.py
+├── models
+│   ├── book.py
+│   └── __init__.py
+├── Procfile
+├── __pycache__
+│   ├── app.cpython-312.pyc
+│   └── __init__.cpython-312.pyc
+├── README.md
+├── requirements.txt
+├── static
+│   ├── index.js
+│   └── styles.css
+├── templates
+│   └── index.html
+├── tests
+│   └── app_test.py
+└── tree.txt
+
+8 directories, 18 files
