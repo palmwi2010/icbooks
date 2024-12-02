@@ -17,6 +17,7 @@ def fetch_book_details(user_input):
         "Science Fiction",
         "Romance",
         "Thriller",
+        "Crime",
         "Mystery",
         "Horror",
         "Biography",
@@ -24,6 +25,7 @@ def fetch_book_details(user_input):
         "Self-Help",
         "Poetry",
         "Drama",
+        "Young Adult",
     ]
 
     # Make the API request
@@ -52,11 +54,11 @@ def fetch_book_details(user_input):
         f"https://covers.openlibrary.org/b/id/{cover_id}-M.jpg"
         if cover_id else None
     )
-    title = book.get("title", "Unkown Title")
-    authors = ", ".join(book.get("author_name", "Unkown Author"))
+    title = book.get("title", "Unknown Title")
+    authors = ", ".join(book.get("author_name", "Unknown Author"))
     isbn = book.get("isbn", "ISBN Not Found")[0]
     publish_date = book.get("first_publish_year", "Publish Date Not Found")
-    first_sentence = book.get("first_sentence", "Uknown First Sentence")[0]
+    first_sentence = book.get("first_sentence", "Unknown First Sentence")[0]
     subject = book.get("subject", [])
 
     # Find matching generes

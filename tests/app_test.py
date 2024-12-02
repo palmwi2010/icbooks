@@ -28,7 +28,7 @@ def test_homepage_loads_correctly():
 
 
 # API tests:
-def test_get_books_with_mock_file():
+def test_get_books_with_mock_json_file():
     # Mock the content of the JSON file
     mock_json_data = """{"books": [{"title": "Book Title",
     "isbn": "123456789", "authors": "Anonymous"}]}"""
@@ -44,6 +44,51 @@ def test_get_books_with_mock_file():
     assert books[0]["isbn"] == "123456789"
     assert books[0]["author"] == "Anonymous"
     assert books[0]["url"] == url
+
+def test_fetch_book_details_success():
+    # Mock successful API response
+    mock_response = {
+        "docs": [
+            {
+                "cover_i": 14625765,
+                "title": "The Lord of the Rings",
+                "author_name": ["J.R.R Tolkein", "No Other"],
+                "isbn": ["9781611748864"],
+                "first_publish_year": 1954,
+                "first_sentence": ["This is a test sentence."],
+                "subject": ["Fantasy", "Test"],
+            }
+        ]
+    }
+
+    with patch("requests.get") as mock_get:
+        mock_get.return_value.status_code = 200
+        mock_get.return_value.json.return_value = mock_response
+
+        from api.api_utils import fetch_book_details
+        book_details = fetch_book_details("Test Book")
+
+        assert book_details["cover_i"] == "14625765" # int -> str
+        assert book_details["title"] == "The Lord of the Rings"
+        assert book_details["authors"] == "J.R.R Tolkein, No Other" # join
+        assert book_details["isbn"] == "9781611748864"
+        assert book_details["cover_image_url"] == (
+            "https://covers.openlibrary.org/b/id/14625765-M.jpg"
+        )
+
+def test_fetch_book_details_no_results():
+    # Mock API response with no results
+    mock_response = {"docs": []}
+
+    with patch("requests.get") as mock_get:
+        mock_get.return_value.status_code = 200
+        mock_get.return_value.json.return_value = mock_response
+
+        from api.api_utils import fetch_book_details
+        book_details = fetch_book_details("siahdlidnflbdnb")
+
+        assert "message" in book_details
+        assert book_details["message"] == "No matching books found"
 
 
 def test_get_books_reads_json_file():
