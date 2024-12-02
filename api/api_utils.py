@@ -29,11 +29,11 @@ def fetch_book_details(user_input):
     # Make the API request
     try:
         response = requests.get(
-            base_url, params={"q": user_input, "sorts": "new"}
+            base_url, params={"q": user_input, "lang": "eng"}
             )
         # Raises an error if the API is not responding
         response.raise_for_status()
-    except requests.exeptions.RequestException as e:
+    except requests.exceptions.RequestException as e:
         return {"error": f"API request failed: {e}"}
 
     # Parse JSON response
