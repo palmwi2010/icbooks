@@ -14,12 +14,14 @@
                     </div>
 
                     <div class="main-details">
+                        {% if result['first_sentence'] != "U" %}
                         <p class = "quote">{{result['first_sentence']}}</p>
+                        {% endif %}
 
                         <ul class="genre">
-                            <li>Fiction</li>
-                            <li>Fantasy</li>
-                            <li>Adventure</li>
+                            {% for genre in result['matching_genre'] %}
+                            <li>{{genre}}</li>
+                            {% endfor %}
                         </ul>
                         
                         <p><strong>Published:</strong> {{result['publish_date']}}</p>
