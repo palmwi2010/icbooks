@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/assets/icbooks-favicon.png">
+    <link rel="stylesheet" href="../static/styles.css">
+    <script src="../static/index.js" defer></script>
+    <title>ICBooks</title>
+</head>
+<body>
+    <header>
+        <a href="/">
+            <img src="../static/assets/icbooks-logo.png" class="logo">
+        </a>
+        <h1>Imperial's premier book swapping service</h1>
+        <div class="links">
+            <a class="nav-link {% block home %}{% endblock %}" href="/">Home</a>
+            <a class="nav-link {% block about %}{% endblock %}" href="/about">About us</a>
+        </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+    <main>
+        <div class="add-introduction">
+            <h1>Add a book you would like to swap</h1>
+            <p>Add a book that you would be open to swapping, so other users can reach out and offer a swap!</p>
+            <p>Provide a book title, and we will fetch its details for you.</p>
+        </div>
+        <form action="/details" method="post">
+            <div class="book-form">
+
+                <div class="form-item">
+                    <label for="title" class="input-label">Book title</label>
+                    <input type="text" class="input-field" name="title" placeholder="Enter book title">
+                </div>
+                <button type="submit" class="btn secondary">Get info</button>
+            </div>
+        </form>
+    </main>
+
+{% endblock %}

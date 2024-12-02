@@ -1,0 +1,112 @@
+[
+  {
+    "title": "The Book Thief",
+    "authors": "Markus Zusak",
+    "subject": "Historical Fiction",
+    "publish_date": "20th September 2020",
+    "cover_image_url": "https://images-na.ssl-images-amazon.com/images/I/91qBto8cQKL.jpg",
+    "description": "Set during World War II, The Book Thief follows Liesel Meminger, a young girl living in Nazi Germany. Narrated by Death, the novel explores the power of books, the horrors of war, and the courage of the human spirit.",
+    "isbn": "9780375842207",
+    "email": "wp624@ic.ac.uk",
+    "first_sentence": "It was a cold, quiet evening when the book first arrived."
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "authors": "Harper Lee",
+    "subject": "Classic Fiction",
+    "publish_date": "11th July 1960",
+    "cover_image_url": "https://images-na.ssl-images-amazon.com/images/I/81a4kCNuH+L.jpg",
+    "description": "A novel set in the Depression-era Deep South, focusing on themes of racial injustice and moral growth, as seen through the eyes of young Scout Finch.",
+    "isbn": "9780061120084",
+    "email": "mockingbird@literature.com",
+    "first_sentence": "The sun was setting over the quiet town, casting long shadows on the dusty streets."
+  },
+  {
+    "title": "1984",
+    "authors": "George Orwell",
+    "subject": "Dystopian Fiction",
+    "publish_date": "8th June 1949",
+    "cover_image_url": "https://images-na.ssl-images-amazon.com/images/I/71kxa1-0FSL.jpg",
+    "description": "A dystopian novel set in a totalitarian society under constant surveillance, exploring themes of oppression, identity, and truth.",
+    "isbn": "9780451524935",
+    "email": "orwell1984@dystopia.com",
+    "first_sentence": "The clock struck thirteen, and Winston Smith began his day."
+  },
+  {
+    "title": "Pride and Prejudice",
+    "authors": "Jane Austen",
+    "subject": "Romance",
+    "publish_date": "28th January 1813",
+    "cover_image_url": "https://images-na.ssl-images-amazon.com/images/I/91hhCXj9dbL.jpg",
+    "description": "A classic novel that follows Elizabeth Bennet as she navigates issues of love, social status, and personal growth in 19th-century England.",
+    "isbn": "9780141192475",
+    "email": "austenpride@classics.com",
+    "first_sentence": "It was a bright and sunny morning when the news arrived."
+  },
+  {
+    "title": "The Great Gatsby",
+    "authors": "F. Scott Fitzgerald",
+    "subject": "Classic Fiction",
+    "publish_date": "10th April 1925",
+    "cover_image_url": "https://images-na.ssl-images-amazon.com/images/I/71VZJeLeU7L.jpg",
+    "description": "A tragic love story set in the Jazz Age, exploring themes of ambition, wealth, and the American Dream.",
+    "isbn": "9780743273565",
+    "email": "gatsby@literature.com",
+    "first_sentence": "Nick Carraway had always been a quiet observer of the world around him."
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "authors": "J.D. Salinger",
+    "subject": "Coming-of-Age Fiction",
+    "publish_date": "16th July 1951",
+    "cover_image_url": "https://images-na.ssl-images-amazon.com/images/I/71bGmZQ49dL.jpg",
+    "description": "A story about teenage alienation and rebellion as narrated by Holden Caulfield, a disenchanted youth.",
+    "isbn": "9780316769488",
+    "email": "catcherintherye@fiction.com",
+    "first_sentence": "I didn’t feel like writing the usual stuff about where I was born and what school I went to."
+  },
+  {
+    "title": "The Hobbit",
+    "authors": "J.R.R. Tolkien",
+    "subject": "Fantasy",
+    "publish_date": "21st September 1937",
+    "cover_image_url": "https://images-na.ssl-images-amazon.com/images/I/91b0C2YNSrL.jpg",
+    "description": "A fantasy adventure following Bilbo Baggins as he embarks on a quest to help a group of dwarves reclaim their mountain home.",
+    "isbn": "9780547928227",
+    "email": "hobbit@middleearth.com",
+    "first_sentence": "In a hole in the ground, there lived a hobbit."
+  },
+  {
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "authors": "J.K. Rowling",
+    "subject": "Fantasy",
+    "publish_date": "26th June 1997",
+    "cover_image_url": "https://images-na.ssl-images-amazon.com/images/I/81YOuOGFCJL.jpg",
+    "description": "The first book in the Harry Potter series, introducing the magical world of Hogwarts and Harry's battle against dark forces.",
+    "isbn": "9780439708180",
+    "email": "harrypotter@wizardworld.com",
+    "first_sentence": "Mr. and Mrs. Dursley were proud to say that they were perfectly normal, thank you very much."
+  },
+  {
+    "title": "The Road",
+    "authors": "Cormac McCarthy",
+    "subject": "Post-Apocalyptic Fiction",
+    "publish_date": "26th September 2006",
+    "cover_image_url": "https://images-na.ssl-images-amazon.com/images/I/71EGJ2T9D-L.jpg",
+    "description": "A haunting story of a father and son journeying through a desolate, post-apocalyptic world, exploring themes of survival and love.",
+    "isbn": "9780307387899",
+    "email": "theroad@fiction.com",
+    "first_sentence": "The world was gray and silent as the man and his son walked the desolate road."
+  },
+  {
+    "title": "Brave New World",
+    "authors": "Aldous Huxley",
+    "subject": "Dystopian Fiction",
+    "publish_date": "1st September 1932",
+    "cover_image_url": "https://images-na.ssl-images-amazon.com/images/I/81vg2I-BAML.jpg",
+    "description": "A futuristic novel that critiques societal trends and explores themes of technology, freedom, and conformity.",
+    "isbn": "9780060850524",
+    "email": "bravenewworld@dystopia.com",
+    "first_sentence": "The first thing that struck the director when he entered the room was the silence."
+  }
+]
