@@ -40,10 +40,15 @@
                             </div>
                             {% endif %}
                         </div>
+                        <!-- adding input -->
+                        <input type="hidden" name="isbn" value ="{{result['isbn']}}">
+                        <input type="hidden" name="book-title" value ="{{result['title']}}">
+                        <input type="hidden" name="author-subtitle" value ="{{result['authors']}}">
+                        <input type="hidden" name="published_date" value ="{{result['publish_date']}}">
                     </div>
 
                     <div class="bottom-buttons">
-                        <a href={{return_route}} class="btn secondary gray">Back</a>
+                        <!-- <a href={{return_route}} class="btn secondary gray">Back</a> -->
                         {% if return_route != "/" %}
                         <input type="text" hidden value="{{result['title']}}" name="title">
                         <input type="text" hidden value="{{result['authors']}}" name="authors">
