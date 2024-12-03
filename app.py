@@ -1,12 +1,10 @@
 from flask import Flask, render_template, request, session, redirect
-import json
-from database import database
 from sqlalchemy import select
-from models.book import Book
-from blueprints import books
-from cli import create_all, drop_all, populate
 
-from api.api_utils import fetch_book_details
+from .database import database
+from .models.book import Book
+from .cli import create_all, drop_all, populate
+from .api.api_utils import fetch_book_details
 
 app = Flask(__name__)
 app.secret_key = "abc"
@@ -17,14 +15,9 @@ app.config["SQLALCHEMY_DATABASE_URI"] = (
 )
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-# initialisation of database object (instance of SQLAlchemy)
-# with Flask application (app)
-# links SQLAlchemy with the Flask app so that the app can interact
-# with the specified database using SQLAlchemy
+# initialise database object (instance of SQLAlchemy)
 database.init_app(app)
 
-# Register Blueprints
-# app.register_blueprint(books)
 
 with app.app_context():
     app.cli.add_command(create_all)
@@ -32,34 +25,13 @@ with app.app_context():
     app.cli.add_command(populate)
 
 
-def get_book_url(book):
-    return r"https://covers.openlibrary.org/b/isbn/" + book["isbn"] + "-M.jpg"
-
-
-# METHOD WILL BECOME A DATABASE QUERY
-def get_books():
-    with open("./static/books.json") as file:
-        books = json.load(file)
-        for bk in books:
-            bk["cover_image_url"] = get_book_url(bk)
-        return books
-
-
-def get_book_from_isbn(books, isbn):
-    for bk in books:
-        if bk["isbn"] == isbn:
-            return bk
-
-
 @app.route("/", methods=["GET", "POST"])
 def index():
-    # books = get_books()  # REFRESH - WILL REPLACE WITH QUERYING DATABASE
     books = database.session.execute(select(Book)).scalars()
     if request.method == "POST":
         book_data = session.pop("book_data", None)
         book_data["email"] = request.form.get("email", None)
         books.append(book_data)
-        # STORE in database
     return render_template("index.html", books=books)
 
 
@@ -88,15 +60,14 @@ def details():
     if request.method == "POST":
         title = request.form.get("title")
 
-        # call api
+        # fetch from api
         book_data = fetch_book_details(title)
-        session["book_data"] = book_data
-
-        # set return route for cancel
         return_route = "/add"
     else:
-        isbn = request.args.get("isbn")
-        book_data = get_book_from_isbn(books, isbn)
+        id = request.args.get('id')
+
+        # fetch from database
+        book_data = database.get_or_404(Book, id, description="Book not found")
         return_route = "/"
 
     return render_template(
