@@ -62,17 +62,31 @@ def details():
 
         # fetch from api
         book_data = fetch_book_details(title)
+        success_code = book_data.get("success")  #
+        print(success_code)
+
+        # -1 indicates error fulfilling api call
+        if success_code == -1:
+            return render_template("apology.html")
+
+        # -2 indicates error finding book
+        if success_code == -2:
+            return render_template(
+                "add.html", feedback="Could not find requested book."
+            )
+
         return_route = "/add"
     else:
-        id = request.args.get('id')
+        id = request.args.get("id")
 
         # fetch from database
         book_data = database.get_or_404(Book, id, description="Book not found")
         return_route = "/"
 
     return render_template(
-        "details.html", result=book_data, return_route=return_route
-        )
+        "details.html",
+        result=book_data,
+        return_route=return_route)
 
 
 @app.route("/about")
