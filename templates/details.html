@@ -30,8 +30,8 @@
                         
                         <div class="form-item">
                             {% if return_route != "/" %}
-                            <p class="email-instruction">To list for swapping, enter your Email and press confirm!</p>
-                            <input type="email" class="input-field" name="email" placeholder="Enter Imperial Email">
+                            <p class="email-instruction">To list for swapping, enter your Imperial College Email address and press confirm!</p>
+                            <input type="email" required pattern="^.+@ic\.ac\.uk$" class="input-field" name="email" placeholder="Enter Imperial Email">
                             {% else %}
                             <p class="email-instruction">Reach out to the user below to request a swap!</p>
                             <div class="contact-link">
@@ -69,3 +69,10 @@
 
 {% endblock %}
 
+{% block scripts %}
+    <script
+            charset="utf-8"
+            type="text/javascript"
+            src="../static/details.js">
+    </script>
+{% endblock scripts %}

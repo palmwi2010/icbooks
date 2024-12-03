@@ -25,15 +25,3 @@ const applyFilter = (search_term) => {
         }
     })
 }
-
-const $copyIcon = document.querySelector("#copyButton");
-
-if ($copyIcon) {
-    $copyIcon.addEventListener('click', () => handleCopyClick());
-}
-
-const handleCopyClick = () => {
-    const $email = document.querySelector("#copyEmail");
-    const emailAddress = $email.innerText;
-    navigator.clipboard.writeText(emailAddress);
-}

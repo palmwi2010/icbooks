@@ -201,14 +201,6 @@ a {
 
 }
 
-.btn {
-    transition: transform 0.2s ease-in;
-}
-
-.btn:hover {
-    transform: scale(1.2);
-}
-
 .form-item {
     margin-top: 24px;
 }
@@ -314,4 +306,14 @@ a {
 
 .copy-icon {
     cursor: pointer;
+}
+
+.btn:disabled {
+    cursor: not-allowed;
+    background-color: darkgray;
+}
+
+.feedback {
+    color: red;
+    margin-top: 16px;
 }
