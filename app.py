@@ -44,7 +44,7 @@ def get_books():
     # Open the file and parse the JSON data
     try:
         with open("./static/books.json") as file:
-            books = json.load(file) # JSON data -> dictionary 
+            books = json.load(file) # JSON data -> dictionary NOTE: This is not working correctly for some reason!
     except FileNotFoundError:
         raise FileNotFoundError("The file 'static/books.json' was not found.")
     except json.JSONDecodeError:
