@@ -38,6 +38,25 @@
                                 <p id="copyEmail">{{result['email']}}</p>
                                 <span class="copy-icon" id="copyButton" title="Copy to clipboard">&#x1F4CB;</span>
                             </div>
+                            <p id="email-template">Get Email template</p>
+                            <dialog class="template-modal">
+                                <h2>Email template to request {{result['title']}}</h2>
+                                <p class="to-template">To: {{result['email']}}</p>
+                                <textarea class="message-template">
+Hi there,
+
+I saw you have listed {{result['title']}} on ICBooks. I'd love to read it - would you be interested in swapping it for [book title]?
+
+Let me know - I'm available on Imperial campus on [availability].
+
+Many thanks,
+[Name]
+                                </textarea>
+                                <br>
+                                <button class="btn primary">Close</button>
+                        
+                                </p>
+                            </dialog>
                             {% endif %}
                         </div>
                         <!-- adding input -->
@@ -48,7 +67,7 @@
                     </div>
 
                     <div class="bottom-buttons">
-                        <!-- <a href={{return_route}} class="btn secondary gray">Back</a> -->
+                        <a href={{return_route}} class="btn secondary">Back</a>
                         {% if return_route != "/" %}
                         <input type="text" hidden value="{{result['title']}}" name="title">
                         <input type="text" hidden value="{{result['authors']}}" name="authors">
@@ -57,7 +76,7 @@
                         <input type="text" hidden value="{{result['cover_image_url']}}" name="cover_image_url">
                         <input type="text" hidden value="{{result['publish_date']}}" name="publish_date">
                         <input type="text" hidden value="{{result['isbn']}}" name="isbn">
-                        <button type="submit" class="btn secondary">Confirm</button>
+                        <button class="btn primary">Confirm</button>
                         {% endif %}
                     </div>
 
