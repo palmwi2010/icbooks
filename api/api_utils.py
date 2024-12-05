@@ -4,8 +4,6 @@ import requests
 def fetch_book_details(user_input):
     # Validate input
     user_input = user_input.strip()
-    if not user_input:
-        return {"error": "Search term is required"}
 
     # API url
     base_url = "https://openlibrary.org/search.json"
@@ -31,21 +29,21 @@ def fetch_book_details(user_input):
     # Make the API request
     try:
         response = requests.get(
-            base_url, params={"q": user_input,
-                              "language": "eng",
-                              "limit": 1}
-            )
+            base_url, params={"q": user_input, "language": "eng", "limit": 1}
+        )
         # Raises an error if the API is not responding
         response.raise_for_status()
     except requests.exceptions.RequestException as e:
-        return {"error": f"API request failed: {e}"}
+        return {"success": -1,
+                "error": f"API request failed: {e}"}
 
     # Parse JSON response
     data = response.json()
 
     # Check for results
     if not data.get("docs"):
-        return {"message": "No matching books found"}
+        return {"success": -2,
+                "error": "No matching books found"}
 
     # Extract the first result
     book = data["docs"][0]
@@ -66,11 +64,12 @@ def fetch_book_details(user_input):
 
     # Return book details
     return {
+        "success": 0,
         "cover_image_url": cover_image_url,
         "authors": authors,
         "title": title,
         "isbn": isbn,
         "publish_date": publish_date,
         "first_sentence": first_sentence,
-        "matching_genre": matching_genre,
+        "subject": ", ".join(matching_genre),
     }

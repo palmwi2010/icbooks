@@ -6,7 +6,7 @@
         <div class="details-container">
             
             <div class="details-lhs">
-                <form action="/books/addbook", method="post">
+                <form action="/add", method="post">
 
                     <div class="details-introduction">
                         <h1 class="book-title">{{result['title']}}</h1>
@@ -19,7 +19,7 @@
                         {% endif %}
 
                         <ul class="genre">
-                            {% for genre in result['matching_genre'] %}
+                            {% for genre in result['subject'].split(', ') %}
                             <li>{{genre}}</li>
                             {% endfor %}
                         </ul>
@@ -30,14 +30,33 @@
                         
                         <div class="form-item">
                             {% if return_route != "/" %}
-                            <p class="email-instruction">To list for swapping, enter your Email and press confirm!</p>
-                            <input type="email" class="input-field" name="email" placeholder="Enter Imperial Email">
+                            <p class="email-instruction">To list for swapping, enter your Imperial College Email address and press confirm!</p>
+                            <input type="email" required pattern="^.+@ic\.ac\.uk$" class="input-field" name="email" placeholder="Enter Imperial Email">
                             {% else %}
                             <p class="email-instruction">Reach out to the user below to request a swap!</p>
                             <div class="contact-link">
                                 <p id="copyEmail">{{result['email']}}</p>
                                 <span class="copy-icon" id="copyButton" title="Copy to clipboard">&#x1F4CB;</span>
                             </div>
+                            <p id="email-template">Get Email template</p>
+                            <dialog class="template-modal">
+                                <h2>Email template to request {{result['title']}}</h2>
+                                <p class="to-template">To: {{result['email']}}</p>
+                                <textarea class="message-template">
+Hi there,
+
+I saw you have listed {{result['title']}} on ICBooks. I'd love to read it - would you be interested in swapping it for [book title]?
+
+Let me know - I'm available on Imperial campus on [availability].
+
+Many thanks,
+[Name]
+                                </textarea>
+                                <br>
+                                <button class="btn primary">Close</button>
+                        
+                                </p>
+                            </dialog>
                             {% endif %}
                         </div>
                         <!-- adding input -->
@@ -48,9 +67,16 @@
                     </div>
 
                     <div class="bottom-buttons">
-                        <!-- <a href={{return_route}} class="btn secondary gray">Back</a> -->
+                        <a href={{return_route}} class="btn secondary">Back</a>
                         {% if return_route != "/" %}
-                        <button type="submit" class="btn secondary">Confirm</button>
+                        <input type="text" hidden value="{{result['title']}}" name="title">
+                        <input type="text" hidden value="{{result['authors']}}" name="authors">
+                        <input type="text" hidden value="{{result['subject']}}" name="subject">
+                        <input type="text" hidden value="{{result['first_sentence']}}" name="first_sentence">
+                        <input type="text" hidden value="{{result['cover_image_url']}}" name="cover_image_url">
+                        <input type="text" hidden value="{{result['publish_date']}}" name="publish_date">
+                        <input type="text" hidden value="{{result['isbn']}}" name="isbn">
+                        <button class="btn primary">Confirm</button>
                         {% endif %}
                     </div>
 
@@ -62,3 +88,10 @@
 
 {% endblock %}
 
+{% block scripts %}
+    <script
+            charset="utf-8"
+            type="text/javascript"
+            src="../static/details.js">
+    </script>
+{% endblock scripts %}

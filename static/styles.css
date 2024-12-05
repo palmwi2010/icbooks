@@ -195,18 +195,15 @@ a {
     width: min(100%, 500px);
 }
 
-.btn.secondary {
+.btn.primary {
     font-size: 1.2rem;
     margin-top: 24px;
-
 }
 
-.btn {
-    transition: transform 0.2s ease-in;
-}
-
-.btn:hover {
-    transform: scale(1.2);
+.btn.secondary {
+    background-color: darkgray;
+    font-size: 1.2rem;
+    margin-top: 24px;
 }
 
 .form-item {
@@ -226,6 +223,7 @@ a {
     display: grid;
     grid-template-columns: 2fr 1fr;
     align-items: center;
+    position: relative;
 }
 
 @media screen and (max-width: 768px) {
@@ -295,7 +293,8 @@ a {
 }
 
 .email-instruction {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
 .contact-link {
@@ -308,10 +307,92 @@ a {
     width: min-content;
 }
 
-.contact-link * {
+.copy-icon {
+    cursor: pointer;
+}
+
+.btn:disabled {
+    cursor: not-allowed;
+    background-color: darkgray;
+}
+
+.feedback {
+    color: red;
+    margin-top: 16px;
+}
+
+#email-template {
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: underline;
+    color: #0000cd;
+    margin-top: 16px;
+    cursor: pointer;
+}
+
+dialog {
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    padding: 24px;
+    width: max(40%, 400px);
+    margin: auto;
+    outline: none;
+    border: none;
+    border-radius: 24px;
+}
+
+dialog button {
+    margin: auto;
+    display: flex;
+}
+
+textarea {
+    width: 100%;
+    height: 300px;
+    padding: 1ch;
+    font-size: 1.1rem;
+    border: 1px solid darkgray;
+    outline: none;
+}
+
+::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.about-img {
+    width: min(90%, 400px);
+    display: flex;
+    margin: 24px auto;
+}
+
+.about-list {
+    list-style-position: inside;
+}
+
+.about-list li {
+    margin-block: 4px;
+}
+
+.hero-message {
+    font-size: 2rem;
+    margin-block: 16px;
     font-weight: 700;
 }
 
-.copy-icon {
-    cursor: pointer;
+.subhero-message {
+    font-size: 1.5rem;
+    margin-block: 8px;
+    font-weight: 700;
+}
+
+.img-caption {
+    font-style: italic;
+    color: gray;
+}
+
+.img-container {
+    text-align: center; /* Centers the image and caption */
+    margin: 20px;
 }
