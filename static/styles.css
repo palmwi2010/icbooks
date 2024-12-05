@@ -307,9 +307,6 @@ a {
     width: min-content;
 }
 
-.contact-link * {
-}
-
 .copy-icon {
     cursor: pointer;
 }
@@ -362,4 +359,40 @@ textarea {
 
 ::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.about-img {
+    width: min(90%, 400px);
+    display: flex;
+    margin: 24px auto;
+}
+
+.about-list {
+    list-style-position: inside;
+}
+
+.about-list li {
+    margin-block: 4px;
+}
+
+.hero-message {
+    font-size: 2rem;
+    margin-block: 16px;
+    font-weight: 700;
+}
+
+.subhero-message {
+    font-size: 1.5rem;
+    margin-block: 8px;
+    font-weight: 700;
+}
+
+.img-caption {
+    font-style: italic;
+    color: gray;
+}
+
+.img-container {
+    text-align: center; /* Centers the image and caption */
+    margin: 20px;
 }
