@@ -6,7 +6,6 @@ if ($copyIcon)
 
 // submit button enabled when not empty
 const $inputField = document.querySelector(".input-field");
-const $submitButton = document.querySelector(".btn");
 
 if ($inputField) {
     $inputField.addEventListener('input', (e) => checkValidity(e));
@@ -18,4 +17,19 @@ const checkValidity = (e) => {
     } else {
         e.target.setCustomValidity("");
     }
+}
+
+const $templateButton = document.querySelector("#email-template");
+const $closeButton = document.querySelector("dialog button.primary");
+const $modal = document.querySelector("dialog");
+
+if ($templateButton) {
+    $templateButton.addEventListener('click', e => {
+        $modal.showModal();
+    })
+
+    $closeButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        $modal.close();
+    })
 }
