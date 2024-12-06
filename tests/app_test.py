@@ -54,6 +54,7 @@ def test_fetch_book_details_success():
             "Fantasy, Fiction"
         )  # join with filtering
 
+
 # Test failed response from API and parsing of returned data
 def test_error_in_api_raised_correctly():
     # Mock a failed API response
