@@ -212,6 +212,7 @@ a {
 
 .bottom-buttons {
     display: flex;
+    align-items: center;
     gap:48px;
 }
 
@@ -401,4 +402,22 @@ textarea {
 .img-container {
     text-align: center; /* Centers the image and caption */
     margin: 20px;
+}
+
+/* Base style for the bin delete button */
+.bin-delete-btn {
+    background-color: darkgray;  /* Red background, common for delete actions */
+    border: none;               /* Remove default button border */
+    border-radius: 50%;         /* Circular button */
+    padding: 2px;              /* Sufficient padding for a round button */
+    cursor: pointer;           /* Change cursor to pointer on hover */
+    height: fit-content;
+    margin-right: 32px;
+    margin-left: auto;
+}
+
+.bin-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
 }

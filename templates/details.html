@@ -54,7 +54,6 @@ Many thanks,
                                 </textarea>
                                 <br>
                                 <button class="btn primary">Close</button>
-                        
                                 </p>
                             </dialog>
                             {% endif %}
@@ -77,6 +76,10 @@ Many thanks,
                         <input type="text" hidden value="{{result['publish_date']}}" name="publish_date">
                         <input type="text" hidden value="{{result['isbn']}}" name="isbn">
                         <button class="btn primary">Confirm</button>
+                        {% else %}
+                        <button class="bin-delete-btn">
+                            <img src="../static/assets/bin.svg" class="bin-img">
+                        </button>
                         {% endif %}
                     </div>
 
