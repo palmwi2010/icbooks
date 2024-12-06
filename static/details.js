@@ -19,6 +19,12 @@ const checkValidity = (e) => {
     }
 }
 
+const handleCopyClick = () => {
+    const $email = document.querySelector("#copyEmail");
+    const emailAddress = $email.innerText;
+    navigator.clipboard.writeText(emailAddress);
+}
+
 const $templateButton = document.querySelector("#email-template");
 const $closeButton = document.querySelector("dialog button.primary");
 const $modal = document.querySelector("dialog");
