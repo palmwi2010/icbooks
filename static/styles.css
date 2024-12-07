@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Revalia&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Indie+Flower&family=Oxanium:wght@200..800&family=Patrick+Hand+SC&family=Revalia&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Indie+Flower&family=Oxanium:wght@200..800&family=Patrick+Hand+SC&family=Revalia&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
+/* General rules */
 * {
 margin: 0;
 padding: 0;
@@ -17,6 +17,7 @@ font-family: 'Roboto';
     --header-side: #4169e1;
 }
 
+/* Navbar styling */
 header {
     padding: 24px 60px;
     background-color: var(--imp-color);
@@ -34,7 +35,6 @@ header {
 .links {
     display: flex;
     gap: 24px;
-    align-items: center;
 }
 
 .nav-link {
@@ -65,12 +65,14 @@ header h1 {
     }
 }
 
+/* Container for content across all pages */
 main {
     width: 90%;
     max-width: 1000px;
     margin: 48px auto;
 }
 
+/* Home page */
 .controls {
     display: flex;
     justify-content: space-between;
@@ -86,7 +88,7 @@ main {
     align-items: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
     .controls {
         flex-direction: column;
         gap:24px;
@@ -139,30 +141,31 @@ a {
 .card {
     height: 250px;
     padding: 24px;
-    border-radius: 16px;
+    border-radius: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     cursor: pointer;
+    outline: white;
+    transition: background-color 0.2s ease-in;
+    transition: outline 0.2s ease-in;
 }
 
 .card p {
     color: black;
     text-decoration: none;
+    text-align: center;
 }
 
 .card:hover {
-    background-color: lightgray;
+    background-color: #f3f4f6; 
+    outline: 1px solid lightblue;
 }
 
 .card img {
     height: 140px;
     object-fit: contain;
     margin-bottom: 16px;
-}
-
-.card p {
-    text-align: center;
 }
 
 .card .title {
@@ -175,6 +178,7 @@ a {
     font-size: 14px;
 }
 
+/* Add page */
 .add-introduction * {
     margin-block: 16px;
 }
@@ -212,11 +216,8 @@ a {
 
 .bottom-buttons {
     display: flex;
+    align-items: center;
     gap:48px;
-}
-
-.btn.gray {
-    background-color: #707070;
 }
 
 .details-container {
@@ -238,29 +239,27 @@ a {
     padding-right: 24px;
 }
 
-.book-title {
+.book-title, .author-subtitle {
     font-family: 'Baskervville', serif;
-    margin-block: 0;
 }
 
 .author-subtitle {
-    font-family: 'Baskervville', serif;
     font-weight: 300;
 }
 
 .quote {
     font-family: "EB Garamond", serif;
-    font-size: 1.2rem; /* Larger text for prominence */
-    line-height: 1.6; /* Generous line spacing for readability */
-    color: #555; /* Subtle, slightly muted text color */
-    margin: 20px 24px 20px 0; /* Space around the quote */
-    padding: 15px 25px; /* Inner spacing for a framed look */
-    border-left: 5px solid #ccc; /* Stylish left border */
-    background-color: #f9f9f9; /* Soft background for contrast */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    border-radius: 8px; /* Rounded corners */
-    max-width: 600px; /* Limit width for better appearance */
-    text-align: justify; /* Align text for a neat block look */
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #555;
+    margin: 20px 24px 20px 0;
+    padding: 15px 25px;
+    border-left: 5px solid #ccc;
+    background-color: #f9f9f9;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 600px;
+    text-align: justify;
 }
 
 .book-side-img {
@@ -333,7 +332,7 @@ a {
 dialog {
     position: absolute;
     left:50%;
-    top:50%;
+    top:50vh;
     transform: translate(-50%, -50%);
     padding: 24px;
     width: max(40%, 400px);
@@ -341,6 +340,12 @@ dialog {
     outline: none;
     border: none;
     border-radius: 24px;
+}
+
+@media screen and (max-width: 768px) {
+    dialog {
+        transform: translate(-50%, 0);
+    }
 }
 
 dialog button {
@@ -361,6 +366,7 @@ textarea {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* About page */
 .about-img {
     width: min(90%, 400px);
     display: flex;
@@ -393,6 +399,6 @@ textarea {
 }
 
 .img-container {
-    text-align: center; /* Centers the image and caption */
+    text-align: center;
     margin: 20px;
 }

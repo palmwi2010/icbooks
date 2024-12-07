@@ -18,11 +18,13 @@
                         <p class = "quote">{{result['first_sentence']}}</p>
                         {% endif %}
 
+                        {% if result['subject'] != "" %}
                         <ul class="genre">
                             {% for genre in result['subject'].split(', ') %}
                             <li>{{genre}}</li>
                             {% endfor %}
                         </ul>
+                        {% endif %}
                         
                         <p><strong>Published:</strong> {{result['publish_date']}}</p>
                         <p><strong>ISBN:</strong> {{result['isbn']}}</p>
@@ -54,7 +56,6 @@ Many thanks,
                                 </textarea>
                                 <br>
                                 <button class="btn primary">Close</button>
-                        
                                 </p>
                             </dialog>
                             {% endif %}

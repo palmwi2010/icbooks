@@ -1,4 +1,4 @@
-// add listener to input field
+// add listener to input field to update on key press
 const $input = document.querySelector("#search");
 
 if ($input) {

@@ -1,4 +1,5 @@
 import requests
+import re
 
 
 def fetch_book_details(user_input):
@@ -53,7 +54,7 @@ def fetch_book_details(user_input):
         if cover_id else None
     )
     title = book.get("title", "Unknown Title")
-    authors = ", ".join(book.get("author_name", "Unknown Author"))
+    authors = ", ".join(book.get("author_name", "Unknown Author")[:3])  # max 3
     isbn = book.get("isbn", "ISBN Not Found")[0]
     publish_date = book.get("first_publish_year", "Publish Date Not Found")
     first_sentence = book.get("first_sentence", "Unknown First Sentence")[0]
@@ -73,3 +74,9 @@ def fetch_book_details(user_input):
         "first_sentence": first_sentence,
         "subject": ", ".join(matching_genre),
     }
+
+
+def validate_email(email):
+    """Confirm an Email is a valid Imperial Email"""
+    pattern = r'^[a-zA-Z0-9]+@ic\.ac\.uk$'
+    return re.match(pattern, email) is not None
