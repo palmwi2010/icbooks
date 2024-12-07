@@ -21,22 +21,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install flask
-        run: pip install flask
-      - name: Install pytest
-        run: pip install pytest
+      - name: Install packages
+        run: pip install -r requirements.txt
       - name: Run test suite
         run: pytest tests/*.py
 
-#  deploy-to-impaas:
-#    needs: test
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v4
-#      - name: ImPaaS-Deploy
-#        uses: /impaas/impaas-deploy@v3
-#        with:
-#          app-name: icnews
-#          deployment-token: ${{ secrets.IMPAAS_DEPLOY_TOKEN }}
-#          method: PLATFORM
+  deploy-to-impaas:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: ImPaaS-Deploy
+        uses: /impaas/impaas-deploy@v3
+        with:
+          app-name: icbooks
+          deployment-token: ${{ secrets.IMPAAS_DEPLOY_TOKEN }}
+          method: PLATFORM
