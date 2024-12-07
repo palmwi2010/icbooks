@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, redirect
 from sqlalchemy import select
 
 from .database import database
@@ -25,19 +25,20 @@ with app.app_context():
     app.cli.add_command(populate)
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def index():
     books = database.session.execute(select(Book)).scalars()
-    if request.method == "POST":
-        book_data = session.pop("book_data", None)
-        book_data["email"] = request.form.get("email", None)
-        books.append(book_data)
     return render_template("index.html", books=books)
 
 
-@app.route("/add", methods=["GET", "POST"])
+@app.route("/search")
+def search():
+    return render_template("search.html")
+
+
+@app.route("/add", methods=["POST"])
 def add():
-    if request.method == "POST":
+    try:
         database.session.add(
             Book(
                 isbn=request.form.get("isbn"),
@@ -51,8 +52,10 @@ def add():
             )
         )
         database.session.commit()
-        return redirect("/")
-    return render_template("add.html")
+    except Exception as e:
+        print(f"Error occurred adding to database: ${e}")
+        return render_template("apology.html")  # error on add to database
+    return redirect("/")
 
 
 @app.route("/details", methods=["GET", "POST"])
@@ -69,13 +72,13 @@ def details():
         if success_code == -1:
             return render_template("apology.html")
 
-        # -2 indicates error finding book
+        # No book empty: return to search page
         if success_code == -2:
             return render_template(
-                "add.html", feedback="Could not find requested book."
+                "search.html", feedback="Could not find requested book."
             )
 
-        return_route = "/add"
+        return_route = "/search"
     else:
         id = request.args.get("id")
 

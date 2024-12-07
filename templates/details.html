@@ -18,11 +18,13 @@
                         <p class = "quote">{{result['first_sentence']}}</p>
                         {% endif %}
 
+                        {% if result['subject'] != "" %}
                         <ul class="genre">
                             {% for genre in result['subject'].split(', ') %}
                             <li>{{genre}}</li>
                             {% endfor %}
                         </ul>
+                        {% endif %}
                         
                         <p><strong>Published:</strong> {{result['publish_date']}}</p>
                         <p><strong>ISBN:</strong> {{result['isbn']}}</p>
@@ -76,10 +78,6 @@ Many thanks,
                         <input type="text" hidden value="{{result['publish_date']}}" name="publish_date">
                         <input type="text" hidden value="{{result['isbn']}}" name="isbn">
                         <button class="btn primary">Confirm</button>
-                        {% else %}
-                        <button class="bin-delete-btn">
-                            <img src="../static/assets/bin.svg" class="bin-img">
-                        </button>
                         {% endif %}
                     </div>
 

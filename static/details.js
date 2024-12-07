@@ -1,10 +1,16 @@
-// make copy icon work
+// make copy icon copy the Email address
 const $copyIcon = document.querySelector("#copyButton");
 
 if ($copyIcon)
     $copyIcon.addEventListener('click', () => handleCopyClick());
 
-// submit button enabled when not empty
+const handleCopyClick = () => {
+    const $email = document.querySelector("#copyEmail");
+    const emailAddress = $email.innerText;
+    navigator.clipboard.writeText(emailAddress);
+}
+
+// check validity of input field against HTML Email rule
 const $inputField = document.querySelector(".input-field");
 
 if ($inputField) {
@@ -19,12 +25,7 @@ const checkValidity = (e) => {
     }
 }
 
-const handleCopyClick = () => {
-    const $email = document.querySelector("#copyEmail");
-    const emailAddress = $email.innerText;
-    navigator.clipboard.writeText(emailAddress);
-}
-
+// Open and close Email template modal
 const $templateButton = document.querySelector("#email-template");
 const $closeButton = document.querySelector("dialog button.primary");
 const $modal = document.querySelector("dialog");
