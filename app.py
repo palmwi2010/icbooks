@@ -4,7 +4,7 @@ from sqlalchemy import select
 from .database import database
 from .models.book import Book
 from .cli import create_all, drop_all, populate
-from .api.api_utils import fetch_book_details
+from .api.api_utils import fetch_book_details, validate_email
 
 app = Flask(__name__)
 app.secret_key = "abc"
@@ -38,6 +38,10 @@ def search():
 
 @app.route("/add", methods=["POST"])
 def add():
+    # server side validation on email provided
+    if not validate_email(request.form.get("email")):
+        return redirect("/")  # redirect back home - html was tampered with
+
     try:
         database.session.add(
             Book(

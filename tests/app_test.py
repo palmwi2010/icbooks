@@ -1,9 +1,10 @@
 from ..app import app
 import requests
 from unittest.mock import patch
-from api.api_utils import fetch_book_details
+from api.api_utils import fetch_book_details, validate_email
 
 
+# test correct loading of homepage
 def test_homepage_loads_correctly():
     # Create a test client to allow simulation of HTTP requests to the app
     with app.test_client() as client:
@@ -13,8 +14,14 @@ def test_homepage_loads_correctly():
     assert response.status_code == 200
 
 
-# API tests:
-# Test sucessful response from API and parsing of returned data
+# check correct email validation
+def test_validate_correct_email():
+    assert validate_email("user123@ic.ac.uk")
+    assert not validate_email("user@hotmail.com")
+    assert not validate_email("'#$@ic.ac.uk")
+
+
+# API tests: Test sucessful response from API and parsing of returned data
 def test_fetch_book_details_success():
     # Mock successful API response
     mock_response = {
