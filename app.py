@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from sqlalchemy import select
+from dotenv import load_dotenv
+import os
 
 from .database import database
 from .models.book import Book
@@ -9,10 +11,12 @@ from .api.api_utils import fetch_book_details, validate_email
 app = Flask(__name__)
 app.secret_key = "abc"
 
+# load env variables which includes database uri
+load_dotenv()
+
+
 # connection to real database
-app.config["SQLALCHEMY_DATABASE_URI"] = (
-    "postgresql://tg1424:7J4b3q,7y4kG86@db.doc.ic.ac.uk/tg1424"
-)
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # initialise database object (instance of SQLAlchemy)
