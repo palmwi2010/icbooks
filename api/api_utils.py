@@ -53,6 +53,8 @@ def fetch_book_details(user_input):
         f"https://covers.openlibrary.org/b/id/{cover_id}-M.jpg"
         if cover_id else None
     )
+    local_url = save_img(cover_image_url)
+
     title = book.get("title", "Unknown Title")
     authors = ", ".join(book.get("author_name", "Unknown Author")[:3])  # max 3
     isbn = book.get("isbn", "ISBN Not Found")[0]
@@ -66,7 +68,7 @@ def fetch_book_details(user_input):
     # Return book details
     return {
         "success": 0,
-        "cover_image_url": cover_image_url,
+        "cover_image_url": local_url,
         "authors": authors,
         "title": title,
         "isbn": isbn,
@@ -80,3 +82,27 @@ def validate_email(email):
     """Confirm an Email is a valid Imperial Email"""
     pattern = r'^[a-zA-Z0-9]+@ic\.ac\.uk$'
     return re.match(pattern, email) is not None
+
+
+def save_img(url):
+    """save image to local filesystem"""
+    parts = url.split("/")
+    if len(parts) < 2:
+        return url  # not properly formatted url
+
+    identifier = parts[-1]  # identifier for the img
+
+    response = requests.get(url)
+
+    # if failed, return the input url
+    if response.status_code != 200:
+        return url
+
+    filepath = f"./static/book_covers/{identifier}"
+    print(filepath)
+
+    if response.status_code == 200:
+        with open(filepath, "wb") as output_file:
+            output_file.write(response.content)
+
+    return f".{filepath}"  # img src needs extra .

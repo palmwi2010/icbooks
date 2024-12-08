@@ -25,7 +25,7 @@ def populate():
             isbn="9780552773898",
             email="william.palmer24@imperial.ac.uk",
             cover_image_url=(
-                "https://covers.openlibrary.org/b/isbn/9780552773898-M.jpg"
+                "../static/book_covers/9780061120084-M.jpg",
             ),
             title="The Book Thief",
             authors="Markus Zusak",
@@ -37,7 +37,7 @@ def populate():
             isbn="9780061120084",
             email="alfonso.gambino24@imperial.ac.uk",
             cover_image_url=(
-                "https://covers.openlibrary.org/b/isbn/9780061120084-M.jpg",
+                "../static/book_covers/9780552773898-M.jpg",
             ),
             title="To Kill a Mockingbird",
             authors="Harper Lee",

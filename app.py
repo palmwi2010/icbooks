@@ -18,7 +18,6 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 # initialise database object (instance of SQLAlchemy)
 database.init_app(app)
 
-
 with app.app_context():
     app.cli.add_command(create_all)
     app.cli.add_command(drop_all)
