@@ -55,6 +55,9 @@ def test_fetch_book_details_success():
         assert book_details["cover_image_url"] == (
             "https://covers.openlibrary.org/b/id/14625765-M.jpg"
         )  # construct url
+        assert book_details["cached_url"] == (
+            "../static/book_covers/14625765-M.jpg"
+        )  # cached url
         assert book_details["publish_date"] == 1954
         assert book_details["first_sentence"] == "This is a test sentence."
         assert book_details["subject"] == (

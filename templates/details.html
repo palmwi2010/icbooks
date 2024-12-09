@@ -75,6 +75,7 @@ Many thanks,
                         <input type="text" hidden value="{{result['subject']}}" name="subject">
                         <input type="text" hidden value="{{result['first_sentence']}}" name="first_sentence">
                         <input type="text" hidden value="{{result['cover_image_url']}}" name="cover_image_url">
+                        <input type="text" hidden value="{{result['cached_url']}}" name="cached_url">
                         <input type="text" hidden value="{{result['publish_date']}}" name="publish_date">
                         <input type="text" hidden value="{{result['isbn']}}" name="isbn">
                         <button class="btn primary">Confirm</button>
@@ -83,7 +84,7 @@ Many thanks,
 
                 </form>
             </div>
-            <img src={{result['cover_image_url']}} alt="Book cover" class="book-side-img">
+            <img src={{result['cached_url']}} alt="Book cover" class="book-side-img" onerror='this.src="{{result['cover_image_url']}}"; this.onerror=null;'>
         </div>
     </main>
 
