@@ -141,9 +141,12 @@ def update_cache(cover_urls):
         if fname not in cached_urls:
             save_img(file)
         else:
-            cached_urls.remove(fname)
+            # if it is a jpg
+            if fname.lower().endswith('.jpg'):
+                cached_urls.remove(fname)
 
     # any items remaining in filenames are not needed
     for fname in cached_urls:
-        filepath = os.path.join(dirname, fname)
-        os.remove(filepath)
+        if fname.lower().endswith('.jpg'):
+            filepath = os.path.join(dirname, fname)
+            os.remove(filepath)
