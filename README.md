@@ -3,7 +3,9 @@
 ## Summary
 ICBooks is a book swapping service intended to allow Imperial College students to list books for swap, and organise swaps with their peers. [See the site live here!](https://icbooks.impaas.uk/)
 
-It is deployed on a Tsuru server, and the tech stack includes Flask, PostgreSQL, SQLAlchemy and HTML/CSS/JS (with Jinja2 templating). It makes use of [OpenLibrary's public Search API](https://openlibrary.org/dev/docs/api/search) to fetch information about a book. It uses a Github Actions deployment pipeline for CI/CD, with automated format checking, test control and deployment on pushing.
+It is deployed on a Tsuru server, and the tech stack includes Flask, PostgreSQL, SQLAlchemy and HTML/CSS/JS (with Jinja2 templating). It makes use of [OpenLibrary's public Search API](https://openlibrary.org/dev/docs/api/search) to fetch information about a book. Photo credit for covers also goes to OpenLibrary. 
+
+ICBooks uses a Github Actions deployment pipeline for CI/CD, with automated format checking, test control and deployment on pushing.
 
 ## Usage
 
