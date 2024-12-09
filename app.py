@@ -14,11 +14,9 @@ from .api.api_utils import (
 )
 
 app = Flask(__name__)
-app.secret_key = "abc"
 
 # load env variables which includes database uri
 load_dotenv()
-
 
 # connection to real database
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI")
@@ -103,7 +101,7 @@ def details():
         "details.html",
         result=book_data,
         return_route=return_route
-    )
+        )
 
 
 @app.route("/about")
@@ -115,6 +113,22 @@ def about():
 def refresh_cache():
     cover_urls = database.session.execute(
         select(Book.cover_image_url)
-    ).scalars()
+        ).scalars()
     update_cache(cover_urls)
     return redirect("/")
+
+
+@app.route("/delete", methods=["GET", "POST"])
+def delete():
+    if request.method == "POST":
+        id = request.form.get("id-to-delete")
+        book_to_delete = (
+            database.session.execute(select(Book).filter(Book.id == id))
+            .scalars()
+            .first()
+        )
+        database.session.delete(book_to_delete)
+        database.session.commit()
+
+    books = database.session.execute(select(Book)).scalars()
+    return render_template("delete.html", books=books)
