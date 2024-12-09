@@ -39,27 +39,30 @@ def test_fetch_book_details_success():
     }
 
     with patch("requests.get") as mock_get:
-        with patch("api.api_utils.save_img") as mock_save:
-            mock_get.return_value.status_code = 200
-            mock_get.return_value.json.return_value = mock_response
-            mock_save.return_value = "../book_covers/14625765-M.jpg"
+        mock_get.return_value.status_code = 200
+        mock_get.return_value.json.return_value = mock_response
 
-            book_details = fetch_book_details("Test Book")
+        from api.api_utils import fetch_book_details
 
-            assert book_details["success"] == 0
-            assert book_details["title"] == "The Lord of the Rings"
-            assert book_details["authors"] == (
-                "J.R.R Tolkein, No Other"
-            )  # join
-            assert book_details["isbn"] == "9781611748864"
-            assert book_details["cover_image_url"] == (
-                "../book_covers/14625765-M.jpg"
-            )  # construct url
-            assert book_details["publish_date"] == 1954
-            assert book_details["first_sentence"] == "This is a test sentence."
-            assert book_details["subject"] == (
-                "Fantasy, Fiction"
-            )  # join with filtering
+        book_details = fetch_book_details("Test Book")
+
+        assert book_details["success"] == 0
+        assert book_details["title"] == "The Lord of the Rings"
+        assert book_details["authors"] == (
+            "J.R.R Tolkein, No Other"
+        )  # join
+        assert book_details["isbn"] == "9781611748864"
+        assert book_details["cover_image_url"] == (
+            "https://covers.openlibrary.org/b/id/14625765-M.jpg"
+        )  # construct url
+        assert book_details["cached_url"] == (
+            "../static/book_covers/14625765-M.jpg"
+        )  # cached url
+        assert book_details["publish_date"] == 1954
+        assert book_details["first_sentence"] == "This is a test sentence."
+        assert book_details["subject"] == (
+            "Fantasy, Fiction"
+        )  # join with filtering
 
 
 # Test failed response from API and parsing of returned data
@@ -85,6 +88,8 @@ def test_fetch_book_details_no_results():
     with patch("requests.get") as mock_get:
         mock_get.return_value.status_code = 200
         mock_get.return_value.json.return_value = mock_response
+
+        from api.api_utils import fetch_book_details
 
         book_details = fetch_book_details("siahdlidnflbdnb")
 

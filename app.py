@@ -4,7 +4,12 @@ from sqlalchemy import select
 from .database import database
 from .models.book import Book
 from .cli import create_all, drop_all, populate
-from .api.api_utils import fetch_book_details, validate_email
+from .api.api_utils import (
+    fetch_book_details,
+    validate_email,
+    update_cache,
+    save_img
+)
 
 app = Flask(__name__)
 app.secret_key = "abc"
@@ -42,11 +47,13 @@ def add():
         return redirect("/")  # redirect back home - html was tampered with
 
     try:
+        save_img(request.form.get("cover_image_url"))  # cache the book image
         database.session.add(
             Book(
                 isbn=request.form.get("isbn"),
                 email=request.form.get("email"),
                 cover_image_url=request.form.get("cover_image_url"),
+                cached_url=request.form.get("cached_url"),
                 title=request.form.get("title"),
                 authors=request.form.get("authors"),
                 publish_date=request.form.get("publish_date"),
@@ -69,7 +76,6 @@ def details():
         # fetch from api
         book_data = fetch_book_details(title)
         success_code = book_data.get("success")  #
-        print(success_code)
 
         # -1 indicates error fulfilling api call
         if success_code == -1:
@@ -92,9 +98,19 @@ def details():
     return render_template(
         "details.html",
         result=book_data,
-        return_route=return_route)
+        return_route=return_route
+    )
 
 
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+
+@app.route("/refresh_cache")
+def refresh_cache():
+    cover_urls = database.session.execute(
+        select(Book.cover_image_url)
+    ).scalars()
+    update_cache(cover_urls)
+    return redirect("/")
