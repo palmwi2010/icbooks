@@ -402,3 +402,36 @@ textarea {
     text-align: center;
     margin: 20px;
 }
+
+/* Delete page styling */
+table {
+    width: 100%;           /* Full width */
+    border-collapse: collapse;  /* Merge table borders */
+    margin: 20px 0;        /* Add space around the table */
+  }
+  
+th, td {
+    padding: 12px 15px;    /* Add padding for readability */
+    text-align: left;       /* Left-align text */
+    border-bottom: 1px solid #ddd;  /* Add a light border for rows */
+  }
+  
+  /* Add color to the table headers */
+  table th {
+    background-color: var(--header-side); /* Green background for the header */
+    color: white;             /* White text */
+  }
+  
+  /* Zebra striping for the rows */
+  table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray for even rows */
+  }
+  
+  table tbody tr:hover {
+    background-color: #ddd;  /* Highlight row when hovered */
+  }
+
+  .delete-btn {
+    cursor: pointer;
+    color: var(--imp-color);
+  }
