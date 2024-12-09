@@ -4,6 +4,7 @@ const $copyIcon = document.querySelector("#copyButton");
 if ($copyIcon)
     $copyIcon.addEventListener('click', () => handleCopyClick());
 
+// write the email address to clipboard
 const handleCopyClick = () => {
     const $email = document.querySelector("#copyEmail");
     const emailAddress = $email.innerText;
@@ -12,11 +13,11 @@ const handleCopyClick = () => {
 
 // check validity of input field against HTML Email rule
 const $inputField = document.querySelector(".input-field");
-
 if ($inputField) {
     $inputField.addEventListener('input', (e) => checkValidity(e));
 }
 
+// sets custom constraint message
 const checkValidity = (e) => {
     if (e.target.validity.patternMismatch) {
         e.target.setCustomValidity("Email must be a valid Imperial Email address.");

@@ -23,7 +23,7 @@ def populate():
     initial_books = [
         Book(
             isbn="9780552773898",
-            email="william.palmer24@imperial.ac.uk",
+            email="wp624@ic.ac.uk",
             cover_image_url=(
                 "https://covers.openlibrary.org/b/id/8153054-M.jpg"
             ),
@@ -36,7 +36,7 @@ def populate():
         ),
         Book(
             isbn="9780061120084",
-            email="alfonso.gambino24@imperial.ac.uk",
+            email="wp624@ic.ac.uk",
             cover_image_url=(
                 "https://covers.openlibrary.org/b/id/12606502-M.jpg"
             ),

@@ -1,10 +1,9 @@
 from ..database import database as db
 
 
-# Model tells us that the class is a table
+# Set structure of Book model in db
 class Book(db.Model):
 
-    # __tablename__ = "books"
     id = db.Column(db.Integer, primary_key=True)
     isbn = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=True)

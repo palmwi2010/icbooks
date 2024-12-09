@@ -8,6 +8,7 @@ if ($input) {
     })
 }
 
+// filter to show only books with the given search term (case-insensitive)
 const applyFilter = (search_term) => {
     const $cards = document.querySelectorAll(".card");
 

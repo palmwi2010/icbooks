@@ -4,29 +4,12 @@ import os
 
 
 def fetch_book_details(user_input):
+    """Fetch book result from the API and parse the result"""
     # Validate input
     user_input = user_input.strip()
 
     # API url
     base_url = "https://openlibrary.org/search.json"
-
-    # List of all possible book genres (you can expand this list)
-    predefined_genres = [
-        "Fiction",
-        "Fantasy",
-        "Science Fiction",
-        "Romance",
-        "Thriller",
-        "Crime",
-        "Mystery",
-        "Horror",
-        "Biography",
-        "History",
-        "Self-Help",
-        "Poetry",
-        "Drama",
-        "Young Adult",
-    ]
 
     # Make the API request
     try:
@@ -56,8 +39,8 @@ def fetch_book_details(user_input):
     first_sentence = book.get("first_sentence", "Unknown First Sentence")[0]
     subject = book.get("subject", [])
 
-    # Find matching generes
-    matching_genre = [genre for genre in subject if genre in predefined_genres]
+    # Find matching genres
+    matching_genre = get_matching_genres(subject)
 
     # Get cover images
     cover_id = book.get("cover_i", None)
@@ -93,10 +76,12 @@ def validate_email(email):
 
 
 def save_img(url):
-    """save image to local filesystem"""
+    """Save image to local filesystem for caching"""
+    # return path to default image if no url
     if url == "":
         return "../static/book_covers/placeholder.jpg"  # default image
 
+    # split url into parts
     parts = url.split("/")
     if len(parts) < 2:
         return url  # not properly formatted url
@@ -125,6 +110,7 @@ def save_img(url):
 
 
 def update_cache(cover_urls):
+    """Update the cache based on cover_urls from database"""
     # get directory
     dirname = "./static/book_covers/"
     directory = os.path.dirname(dirname)
@@ -150,3 +136,26 @@ def update_cache(cover_urls):
         if fname.lower().endswith('.jpg'):
             filepath = os.path.join(dirname, fname)
             os.remove(filepath)
+
+
+def get_matching_genres(subject):
+    """Filter for only matching genres from long list"""
+    # List of all possible book genres
+    predefined_genres = [
+        "Fiction",
+        "Fantasy",
+        "Science Fiction",
+        "Romance",
+        "Thriller",
+        "Crime",
+        "Mystery",
+        "Horror",
+        "Biography",
+        "History",
+        "Self-Help",
+        "Poetry",
+        "Drama",
+        "Young Adult",
+    ]
+
+    return [genre for genre in subject if genre in predefined_genres]
