@@ -435,3 +435,7 @@ th, td {
     cursor: pointer;
     color: var(--imp-color);
   }
+
+  .hidden-content {
+    display: none;
+  }
