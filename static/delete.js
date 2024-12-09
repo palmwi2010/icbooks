@@ -12,6 +12,7 @@ $deleteBtns.forEach($btn => {
 
 // hide the form until password is entered
 $hiddenContent = document.querySelector(".hidden-content");
+$hiddenContent.style.display="none";
 
 // in practice password validation should happen at server
 const password = "icbooks2425"
@@ -19,8 +20,12 @@ const password = "icbooks2425"
 function checkPassword() {
     // Prompt user for password
     const userPassword = prompt("Enter the password to view admin services:");
+
+    if (userPassword === null)
+        return;
+
     if (userPassword === password) {
-        hiddenContent.style.display = "block";
+        $hiddenContent.style.display = "block";
     } else {
         alert("Incorrect password!");
         checkPassword();
