@@ -17,7 +17,7 @@
     <div class="library">
         {% for bk in books %}
             <a class="card" href="/details?id={{bk['id']}}">
-                <img src={{bk['cached_url']}} alt="Book cover" class="card-img">
+                <img src={{bk['cached_url']}} alt="Book cover" onerror='this.src="{{bk['cover_image_url']}}"; this.onerror=null;'>
                 <p class="title">{{bk['title']}}</p>
                 <p class="author">{{bk['authors']}}</p>
             </a>
